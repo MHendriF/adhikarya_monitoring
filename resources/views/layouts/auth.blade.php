@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
   <meta name="author" content="PT ADHI KARYA (Persero) Tbk"/>
-  <title>Ahsana Property Syariah | @yield('title')</title>
+  <title>Adhi Karya | @yield('title')</title>
   <!-- Favicon -->
 
   <link rel="icon" href="http://ahsanaproperty.com/wp-content/uploads/2018/04/cropped-favicon-32x32.png" sizes="32x32" />
@@ -71,7 +71,7 @@ html,body{
 
 .input-group-prepend span{
   width: 50px;
-  background-color: #89D237;
+  background-color: #F00;
   color: black;
   border:0 !important;
 }
@@ -96,13 +96,13 @@ input:focus{
 
 .login_btn{
   color: black;
-  background-color: #89D237;
+  background-color: #F00;
   width: 100px;
 }
 
 .login_btn:hover{
   color: black;
-  background-color: #05841D;
+  background-color: #BB0909;
 }
 
 .links{

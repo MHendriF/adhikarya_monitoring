@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<meta name="author" content="lapantiga.com">
   <meta name="copyright" content="PT ADHI KARYA (Persero) Tbk">
-	<title>Ahsana Property Syariah | @yield('title')</title>
+	<title>Adhi Karya | @yield('title')</title>
 
 	@include('partials.header')
 

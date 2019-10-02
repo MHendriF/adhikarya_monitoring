@@ -9,8 +9,8 @@
     <div class="card">
       <div class="card-header" style="font-size: 12px; color: #fff">
         <center>
-            <img src="{{ asset('/assets/theme/img/logo_png.png') }}" style="max-height: 90px">
-            <p>Ahsana Property Syariah</p>
+            <img src="{{ asset('/assets/theme/img/logo_adhi.png') }}" style="max-height: 90px">
+            <p>Adhi Karya</p>
         </center>
       </div>
 
@@ -55,7 +55,7 @@
       <div class="card-footer">
         <center><div style="color: #fff; font-size: 10px;color: #fff">
           <span >
-            © 2018 . Ahsana Property Syariah. All rights reserved.
+            © 2019 . Adhi Karya. All rights reserved.
           </span>
           <p>Versi: 1.0.1</p></center>
         </div>
