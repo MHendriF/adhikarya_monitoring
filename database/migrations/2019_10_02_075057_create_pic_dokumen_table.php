@@ -15,7 +15,6 @@ class CreatePicDokumenTable extends Migration
     {
         Schema::create('pic_dokumen', function (Blueprint $table) {
             $table->bigIncrements('id_pic_dokumen');
-
             $table->bigInteger('id_user')->unsigned();
             $table->bigInteger('id_dokumen')->unsigned();
             $table->foreign('id_user')->references('id_user')->on('user');
