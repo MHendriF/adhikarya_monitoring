@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('custom-css')
-    <link href="{{ asset("/assets/tema/ahsana/vendors/bower_components/dropify/dist/css/dropify.min.css") }}" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset("/assets/tema/ahsana/vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css") }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset("/assets/theme/vendors/bower_components/dropify/dist/css/dropify.min.css") }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset("/assets/theme/vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css") }}" rel="stylesheet" type="text/css"/>
 @endsection
 
 @section('title', 'User Create')
@@ -71,13 +71,13 @@
 
 @section('custom-js')
     <!-- Moment JavaScript -->
-    <script src="{{ asset("/assets/tema/ahsana/vendors/bower_components/moment/min/moment-with-locales.min.js") }}"></script>
+    <script src="{{ asset("/assets/theme/vendors/bower_components/moment/min/moment-with-locales.min.js") }}"></script>
     <!-- Bootstrap Datetimepicker JavaScript -->
-    <script src="{{ asset("/assets/tema/ahsana/vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js") }}"></script>
+    <script src="{{ asset("/assets/theme/vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js") }}"></script>
     <!-- Bootstrap Dropify JavaScript -->
-		<script src="{{ asset("/assets/tema/ahsana/vendors/bower_components/dropify/dist/js/dropify.min.js") }}"></script>
+		<script src="{{ asset("/assets/theme/vendors/bower_components/dropify/dist/js/dropify.min.js") }}"></script>
 		<!-- Form Flie Upload Data JavaScript -->
-		<script src="{{ asset("/assets/tema/ahsana/dist/js/form-file-upload-data.js") }}"></script>
+		<script src="{{ asset("/assets/theme/dist/js/form-file-upload-data.js") }}"></script>
 
     <script type="text/javascript">
         $(function () {

@@ -31,7 +31,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public $timestamps = true;
 
     protected $fillable = [
-        'name_user', 'username', 'email', 'password', 'id_jabatan', 'id_divisi', 'id_lembaga'
+        'name_user', 'username', 'email', 'password', 'id_jabatan', 'id_divisi', 'id_lembaga', 'nohp'
     ];
 
     /**

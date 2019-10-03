@@ -14,11 +14,25 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::find(1);
+        $user1 = User::find(1);
+        $user2 = User::find(2);
+        $user3 = User::find(3);
+        $user4 = User::find(4);
 
-        $role = Role::create(['name' => 'Admin']);
+        $role1 = Role::create(['name' => 'Admin']);
+        $role2 = Role::create(['name' => 'Finance']);
+        $role3 = Role::create(['name' => 'Engineer']);
+        $role4 = Role::create(['name' => 'Staff']);
+
         $permissions = Permission::pluck('id','id')->all();
-        $role->syncPermissions($permissions);
-        $user->assignRole([$role->id]);
+        $role1->syncPermissions($permissions);
+        $user1->assignRole([$role1->id]);
+
+        $user2->assignRole([$role2->id]);
+        $user3->assignRole([$role3->id]);
+        $user4->assignRole([$role4->id]);
+
+
+
     }
 }
