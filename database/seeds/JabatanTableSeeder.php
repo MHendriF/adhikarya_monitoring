@@ -17,10 +17,15 @@ class JabatanTableSeeder extends Seeder
 
         DB::table('jabatan')->insert(array(
           'nama_jabatan'=>'Project Manager', 'created_at'=>$today, 'updated_at'=>$today),
-          'nama_jabatan'=>'KONSULTAN QS', 'created_at'=>$today, 'updated_at'=>$today),
-          'nama_jabatan'=>'KONSULTAN PERENCANAAN', 'created_at'=>$today, 'updated_at'=>$today),
-          'nama_jabatan'=>'KONSULTAN MK', 'created_at'=>$today, 'updated_at'=>$today),
-          'nama_jabatan'=>'KONTRAKTOR', 'created_at'=>$today, 'updated_at'=>$today),
+          'nama_jabatan'=>'Deputi Project Manager', 'created_at'=>$today, 'updated_at'=>$today),
+          'nama_jabatan'=>'Project Engineer Manager', 'created_at'=>$today, 'updated_at'=>$today),
+          'nama_jabatan'=>'Project Commercial Manager', 'created_at'=>$today, 'updated_at'=>$today),
+          'nama_jabatan'=>'Project Finance Manager', 'created_at'=>$today, 'updated_at'=>$today),
+          'nama_jabatan'=>'Project Production Manager', 'created_at'=>$today, 'updated_at'=>$today),
+          'nama_jabatan'=>'Supervisor', 'created_at'=>$today, 'updated_at'=>$today),
+          'nama_jabatan'=>'Supervisor MEP', 'created_at'=>$today, 'updated_at'=>$today),
+          'nama_jabatan'=>'Planning', 'created_at'=>$today, 'updated_at'=>$today),
+          'nama_jabatan'=>'Admin', 'created_at'=>$today, 'updated_at'=>$today),
         ));
     }
 }
