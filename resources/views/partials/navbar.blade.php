@@ -4,8 +4,8 @@
 				<div class="nav-header pull-left">
 					<div class="logo-wrap">
 						<a href="index.html">
-							<img class="brand-img" src="{{url('assets/theme/img/logo_png.png')}}" style="max-height: 30px" alt="brand"/>
-							<span class="brand-text">Ahsana</span>
+							<img class="brand-img" src="{{url('assets/theme/img/adhikarya_logo.png')}}" style="max-height: 30px" alt="brand"/>
+							<span class="brand-text">AdhiKarya</span>
 						</a>
 					</div>
 				</div>

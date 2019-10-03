@@ -24,3 +24,8 @@ Route::group(['namespace' => 'Authenticate'], function() {
 		Route::get('/reset-password/{reset_code}', array('as' => 'getReset', 'uses' => 'LoginController@resetPassword'));
 		Route::post('/reset-password', array('as' => 'postReset', 'uses' => 'LoginController@setNewPassword'));
 });
+
+Route::group(['middleware' => ['auth']], function()
+{
+		Route::get('dashboard', array('as' => 'dashboard','uses' =>'DashboardController@getDashboard'));
+});

@@ -28,5 +28,11 @@ class DatabaseSeeder extends Seeder
 
         $this->call(JenisDokumenTableSeeder::class);
         $this->command->info("Jenis Dokumen table seeding is completed :)");
+
+        $this->call(PermissionTableSeeder::class);
+        $this->command->info("Permission table seeding is completed :)");
+
+        $this->call(RoleTableSeeder::class);
+        $this->command->info("Role table seeding is completed :)");
     }
 }
