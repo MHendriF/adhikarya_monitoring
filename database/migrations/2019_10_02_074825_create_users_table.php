@@ -22,13 +22,12 @@ class CreateUsersTable extends Migration
             $table->string('reset_password_code')->nullable();
             $table->timestamp('email_verified_at')->nullable();
 
-            $table->bigInteger('id_jabatan')->unsigned();
-            $table->bigInteger('id_divisi')->unsigned();
-            $table->bigInteger('id_lembaga')->unsigned();
-
-            $table->foreign('id_jabatan')->references('id_jabatan')->on('jabatan');
-            $table->foreign('id_divisi')->references('id_divisi')->on('divisi');
-            $table->foreign('id_lembaga')->references('id_lembaga')->on('lembaga');
+            $table->bigInteger('id_jabatan')->unsigned()->nullable();
+            $table->foreign('id_jabatan')->references('id_jabatan')->on('jabatan')->onUpdate('cascade')->onDelete('cascade');
+            $table->bigInteger('id_divisi')->unsigned()->nullable();
+            $table->foreign('id_divisi')->references('id_divisi')->on('divisi')->onUpdate('cascade')->onDelete('cascade');
+            $table->bigInteger('id_lembaga')->unsigned()->nullable();
+            $table->foreign('id_lembaga')->references('id_lembaga')->on('lembaga')->onUpdate('cascade')->onDelete('cascade');
 
             $table->rememberToken();
             $table->timestamps();

@@ -16,7 +16,7 @@ class CreateDivisiTable extends Migration
         Schema::create('divisi', function (Blueprint $table) {
             $table->bigIncrements('id_divisi');
             $table->string('nama_divisi', 80);
-            $table->string('keterangan_divisi', 255);
+            $table->string('keterangan_divisi', 255)->nullable();
             $table->timestamps();
         });
     }

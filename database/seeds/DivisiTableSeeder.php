@@ -16,12 +16,12 @@ class DivisiTableSeeder extends Seeder
         $today =  Carbon::now()->format('Y-m-d H:i:s');
 
         DB::table('divisi')->insert(array(
-          'nama_divisi'=>'ENGINEERING', 'created_at'=>$today, 'updated_at'=>$today),
-          'nama_divisi'=>'PRODUCTION', 'created_at'=>$today, 'updated_at'=>$today),
-          'nama_divisi'=>'FINANCE', 'created_at'=>$today, 'updated_at'=>$today),
-          'nama_divisi'=>'SEKRETARIAT', 'created_at'=>$today, 'updated_at'=>$today),
-          'nama_divisi'=>'MUTU', 'created_at'=>$today, 'updated_at'=>$today),
-          'nama_divisi'=>'HSE / K3L', 'created_at'=>$today, 'updated_at'=>$today),
+          array('nama_divisi'=>'ENGINEERING', 'keterangan_divisi'=>'', 'created_at'=>$today, 'updated_at'=>$today),
+          array('nama_divisi'=>'PRODUCTION', 'keterangan_divisi'=>'', 'created_at'=>$today, 'updated_at'=>$today),
+          array('nama_divisi'=>'FINANCE', 'keterangan_divisi'=>'', 'created_at'=>$today, 'updated_at'=>$today),
+          array('nama_divisi'=>'SEKRETARIAT', 'keterangan_divisi'=>'', 'created_at'=>$today, 'updated_at'=>$today),
+          array('nama_divisi'=>'MUTU', 'keterangan_divisi'=>'', 'created_at'=>$today, 'updated_at'=>$today),
+          array('nama_divisi'=>'HSE / K3L', 'keterangan_divisi'=>'', 'created_at'=>$today, 'updated_at'=>$today),
         ));
     }
 }

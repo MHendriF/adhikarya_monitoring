@@ -16,11 +16,11 @@ class LembagaTableSeeder extends Seeder
         $today =  Carbon::now()->format('Y-m-d H:i:s');
 
         DB::table('lembaga')->insert(array(
-          'nama_lembaga'=>'OWNER', 'created_at'=>$today, 'updated_at'=>$today),
-          'nama_lembaga'=>'KONSULTAN QS', 'created_at'=>$today, 'updated_at'=>$today),
-          'nama_lembaga'=>'KONSULTAN PERENCANAAN', 'created_at'=>$today, 'updated_at'=>$today),
-          'nama_lembaga'=>'KONSULTAN MK', 'created_at'=>$today, 'updated_at'=>$today),
-          'nama_lembaga'=>'KONTRAKTOR', 'created_at'=>$today, 'updated_at'=>$today),
+          array('nama_lembaga'=>'OWNER', 'keterangan_lembaga'=>'', 'created_at'=>$today, 'updated_at'=>$today),
+          array('nama_lembaga'=>'KONSULTAN QS', 'keterangan_lembaga'=>'', 'created_at'=>$today, 'updated_at'=>$today),
+          array('nama_lembaga'=>'KONSULTAN PERENCANAAN', 'keterangan_lembaga'=>'', 'created_at'=>$today, 'updated_at'=>$today),
+          array('nama_lembaga'=>'KONSULTAN MK', 'keterangan_lembaga'=>'', 'created_at'=>$today, 'updated_at'=>$today),
+          array('nama_lembaga'=>'KONTRAKTOR', 'keterangan_lembaga'=>'', 'created_at'=>$today, 'updated_at'=>$today),
         ));
     }
 }
