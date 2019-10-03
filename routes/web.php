@@ -52,4 +52,18 @@ Route::group(['middleware' => ['auth']], function()
 
 		});
 
+		Route::group(['prefix' => 'config'], function() {
+
+			Route::get('permission/ajax', array('as' => 'permission.ajax','uses' =>'PermissionController@getPermission'));
+			Route::resource('permission', 'PermissionController');
+			Route::get('permission/{id}/delete',array('as'=> 'permission.delete','uses' => 'PermissionController@destroy'));
+
+			Route::get('role/ajax', array('as' => 'role.ajax','uses' =>'RoleController@getRole'));
+			Route::resource('role', 'RoleController');
+			Route::get('role/{id}/assign',array('as'=> 'role.assign','uses' => 'RoleController@assign'));
+			Route::put('role/{id}/assign/update',array('as'=> 'role.assign.update','uses' => 'RoleController@assignUpdate'));
+			Route::get('role/{id}/delete',array('as'=> 'role.delete','uses' => 'RoleController@destroy'));
+			
+		});
+
 });

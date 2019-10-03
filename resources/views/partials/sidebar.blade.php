@@ -113,7 +113,10 @@
 						<a href="javascript:void(0);" data-toggle="collapse" data-target="#config"><div class="pull-left"><i class="fa fa-users mr-20"></i><span class="right-nav-text">Configuration</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 						<ul id="config" class="collapse collapse-level-1">
 							<li>
-								<a href="#">General</a>
+								<a href="{{ route('role.index') }}">Role</a>
+							</li>
+							<li>
+								<a href="{{ route('permission.index') }}">Permission</a>
 							</li>
 						</ul>
 					</li>
