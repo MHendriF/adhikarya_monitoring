@@ -1,5 +1,5 @@
 <!-- Favicon -->
-<link rel="icon" href="{{ url('assets/theme/img/ahsanafav.ico') }}" sizes="32x32" />
+<link rel="icon" href="{{ url('assets/theme/img/logo_adhi.png') }}" sizes="32x32" />
 <!-- select2 CSS -->
 <link href="{{ asset("/assets/theme/vendors/bower_components/select2/dist/css/select2.min.css")}}" rel="stylesheet" type="text/css"/>
 <!-- bootstrap-select CSS -->
