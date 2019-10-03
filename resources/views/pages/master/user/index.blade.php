@@ -41,12 +41,11 @@
 										<thead>
 											<tr>
 												<th>#</th>
-                        <th>ID User</th>
                         <th>Nama</th>
                         <th>Email</th>
-												<th>Gender</th>
-                        <th>Kota</th>
-												<th>Status</th>
+                        <th>Position</th>
+                        <th>Divisi</th>
+                        <th>Lembaga</th>
 												<th>Manage</th>
 											</tr>
 										</thead>
@@ -80,23 +79,22 @@
 @section('custom-js')
   <script>
       $(document).ready( function () {
-          var t = $('#datatable').DataTable({
+          var oTable = $('#datatable').DataTable({
               "serverSide": true,
               "processing": true,
               "ajax": "{{ route('user.ajax') }}",
               "columns": [
-                  {data: 'DT_Row_Index', searchable: false},
-                  {data: 'code_user'},
-                  {data: 'name_user'},
+                  {data: 'DT_RowIndex', searchable: false},
+                  {data: 'nama_user'},
                   {data: 'email'},
-                  {data: 'gender', "render": function (data, type, full, meta) { return (data == 0) ? 'Female' : 'Male'; } },
-                  {data: 'city'},
-                  {data: 'status', "render": function (data, type, full, meta) { return (data == 0) ? '<span class="label label-warning">Unactive</span>' : '<span class="label label-success">Active</span>'; } },
+                  {data: 'nama_jabatan'},
+                  {data: 'nama_divisi'},
+                  {data: 'nama_lembaga'},
                   {data: 'action', orderable: false, searchable: false}
               ],
               "order": [[ 1, 'asc' ]]
           });
-          t.on('draw.dt', function() {
+          oTable.on('draw.dt', function() {
               $('[data-toggle="tooltip"]').tooltip();
           })
       });

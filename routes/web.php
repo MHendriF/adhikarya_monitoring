@@ -28,4 +28,11 @@ Route::group(['namespace' => 'Authenticate'], function() {
 Route::group(['middleware' => ['auth']], function()
 {
 		Route::get('dashboard', array('as' => 'dashboard','uses' =>'DashboardController@getDashboard'));
+
+		Route::get('user/ajax', array('as' => 'user.ajax','uses' =>'UserController@getUser'));
+		Route::resource('user', 'UserController');
+		Route::get('user/{id}/delete',array('as'=> 'user.delete','uses' => 'UserController@destroy'));
+		Route::get('user/{id}/resetpassword',array('as'=> 'user.resetpassword','uses' => 'UserController@resetpassword'));
+		Route::get('user/{id}/editpassword',array('as'=> 'user.editpassword','uses' => 'UserController@editpassword'));
+		Route::put('user/{id}/updatepassword',array('as'=> 'user.updatepassword','uses' => 'UserController@updatepassword'));
 });

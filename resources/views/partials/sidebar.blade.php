@@ -95,7 +95,7 @@
 						<a href="javascript:void(0);" data-toggle="collapse" data-target="#master"><div class="pull-left"><i class="zmdi zmdi-menu mr-20"></i><span class="right-nav-text">Master Data</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 						<ul id="master" class="collapse collapse-level-1">
 							<li>
-								<a href="#">User</a>
+								<a href="{{ route('user.index') }}">User</a>
 							</li>
 						</ul>
 					</li>
