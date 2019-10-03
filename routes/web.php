@@ -35,4 +35,21 @@ Route::group(['middleware' => ['auth']], function()
 		Route::get('user/{id}/resetpassword',array('as'=> 'user.resetpassword','uses' => 'UserController@resetpassword'));
 		Route::get('user/{id}/editpassword',array('as'=> 'user.editpassword','uses' => 'UserController@editpassword'));
 		Route::put('user/{id}/updatepassword',array('as'=> 'user.updatepassword','uses' => 'UserController@updatepassword'));
+
+		Route::group(['prefix' => 'master'], function() {
+
+			Route::get('jabatan/ajax', array('as' => 'jabatan.ajax','uses' =>'JabatanController@getJabatan'));
+			Route::resource('jabatan', 'JabatanController');
+			Route::get('jabatan/{id}/delete',array('as'=> 'jabatan.delete','uses' => 'JabatanController@destroy'));
+
+			Route::get('divisi/ajax', array('as' => 'divisi.ajax','uses' =>'DivisiController@getDivisi'));
+			Route::resource('divisi', 'DivisiController');
+			Route::get('divisi/{id}/delete',array('as'=> 'divisi.delete','uses' => 'DivisiController@destroy'));
+
+			Route::get('lembaga/ajax', array('as' => 'lembaga.ajax','uses' =>'LembagaController@getLembaga'));
+			Route::resource('lembaga', 'LembagaController');
+			Route::get('lembaga/{id}/delete',array('as'=> 'lembaga.delete','uses' => 'LembagaController@destroy'));
+
+		});
+
 });

@@ -97,6 +97,15 @@
 							<li>
 								<a href="{{ route('user.index') }}">User</a>
 							</li>
+							<li>
+								<a href="{{ route('lembaga.index') }}">Lembaga</a>
+							</li>
+							<li>
+								<a href="{{ route('divisi.index') }}">Divisi</a>
+							</li>
+							<li>
+								<a href="{{ route('jabatan.index') }}">Jabatan</a>
+							</li>
 						</ul>
 					</li>
 

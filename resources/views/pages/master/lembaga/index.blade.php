@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'User List')
+@section('title', 'Lembaga List')
 
 @section('content')
 <!-- Main Content -->
@@ -10,12 +10,12 @@
     <!-- Row -->
 		<div class="row heading-bg">
 		  <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-				<h5 class="txt-dark">User List</h5>
+				<h5 class="txt-dark">Lembaga List</h5>
 			</div>
 			<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 				<ol class="breadcrumb">
           <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-					<li class="active"><span>User</span></li>
+					<li class="active"><span>Lembaga</span></li>
 				</ol>
 			</div>
 		</div>
@@ -28,7 +28,7 @@
 					<div class="panel-heading">
 						<div class="clearfix"></div>
   					<div class="pull-left">
-  						<a href="{{ route('user.create') }}" class="btn btn-rounded btn-warning"><i class="fa fa-plus"></i> Add New User</a>
+  						<a href="{{ route('lembaga.create') }}" class="btn btn-rounded btn-warning"><i class="fa fa-plus"></i> Add New Lembaga</a>
   					</div>
   				</div>
 
@@ -41,11 +41,8 @@
 										<thead>
 											<tr>
 												<th>#</th>
-                        <th>Nama</th>
-                        <th>Email</th>
-                        <th>Jabatan</th>
-                        <th>Divisi</th>
-                        <th>Lembaga</th>
+												<th>Nama Lembaga</th>
+                        <th>Keterangan</th>
 												<th>Manage</th>
 											</tr>
 										</thead>
@@ -56,11 +53,12 @@
 							</div>
 						</div>
 					</div>
-
 				</div>
+
 			</div>
 		</div>
 		<!-- Row -->
+
   </div>
 
   @include('partials.footer')
@@ -79,22 +77,19 @@
 @section('custom-js')
   <script>
       $(document).ready( function () {
-          var oTable = $('#datatable').DataTable({
+          var t = $('#datatable').DataTable({
               "serverSide": true,
               "processing": true,
-              "ajax": "{{ route('user.ajax') }}",
+              "ajax": "{{ route('lembaga.ajax') }}",
               "columns": [
                   {data: 'DT_RowIndex', searchable: false},
-                  {data: 'nama_user'},
-                  {data: 'email'},
-                  {data: 'nama_jabatan'},
-                  {data: 'nama_divisi'},
                   {data: 'nama_lembaga'},
+                  {data: 'keterangan_lembaga'},
                   {data: 'action', orderable: false, searchable: false}
               ],
               "order": [[ 1, 'asc' ]]
           });
-          oTable.on('draw.dt', function() {
+          t.on('draw.dt', function() {
               $('[data-toggle="tooltip"]').tooltip();
           })
       });
