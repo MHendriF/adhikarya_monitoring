@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('title', 'Permission')
 
@@ -7,17 +7,17 @@
 <!-- Main Content -->
 <div class="page-wrapper">
     <div class="container-fluid">
-        
+
         <!-- Title -->
         <div class="row heading-bg">
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                <h5 class="txt-dark">{{ $tablename }} Permission</h5>
+                <h5 class="txt-dark">Permission</h5>
             </div>
             <!-- Breadcrumb -->
             <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                 <ol class="breadcrumb">
                     <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i>&nbsp;Home</a></li>
-                    <li class="active"><span>{{$tablename}} Permission</span></li>
+                    <li class="active"><span>Permission</span></li>
                 </ol>
             </div>
             <!-- /Breadcrumb -->
@@ -48,26 +48,14 @@
                                                             <table id="datatable" class="table table-hover display pb-10">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th>No</th>
-                                                                        <th>Nama</th>
-                                                                        <th>Display</th>
-                                                                        <th>Deskripsi</th>
-                                                                        <th>Created</th>
-                                                                        <th>Updated</th>
-                                                                        <th>Action</th>
+                                                                      <th>#</th>
+                                                                      <th>Nama</th>
+                                                                      <th>Guard Name</th>
+                                                                      <th>Created</th>
+                                                                      <th>Updated</th>
+                                                                      <th>Action</th>
                                                                     </tr>
                                                                 </thead>
-                                                                <tfoot>
-                                                                    <tr>
-                                                                        <th>No</th>
-                                                                        <th>Nama</th>
-                                                                        <th>Display</th>
-                                                                        <th>Deskripsi</th>
-                                                                        <th>Created</th>
-                                                                        <th>Updated</th>
-                                                                        <th>Action</th>
-                                                                    </tr>
-                                                                </tfoot>
                                                                 <tbody>
                                                                 </tbody>
                                                             </table>
@@ -83,9 +71,9 @@
 
                     </div>
 
-                    
-                    
-                </div>  
+
+
+                </div>
             </div>
         </div>
         <!-- /Row -->
@@ -105,7 +93,7 @@
 
 @endsection
 
-@section('javascripts')
+@section('custom-js')
     <script>
         $(document).ready( function () {
             var t = $('#datatable').DataTable({
@@ -113,10 +101,9 @@
                 "processing": true,
                 "ajax": "{{ route('permission.ajax') }}",
                 "columns": [
-                    {data: 'DT_Row_Index', searchable: false},
+                    {data: 'DT_RowIndex', searchable: false},
                     {data: 'name'},
-                    {data: 'display_name'},
-                    {data: 'description'},
+                    {data: 'guard_name'},
                     {data: 'created_at'},
                     {data: 'updated_at'},
                     {data: 'action', orderable: false, searchable: false}

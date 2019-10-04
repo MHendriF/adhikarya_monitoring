@@ -11,6 +11,7 @@ use DataTables;
 use App\User;
 
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use App\Http\Requests\RoleRequest;
 
 use Illuminate\Http\Request;
@@ -20,7 +21,14 @@ class RoleController extends Controller
     public function selectedPermission($role_id) {
       	$permissionOption = array();
       	$permissions = Permission::all();
-      	$selectedPermission = PermissionRole::where('role_id', $role_id)->get();
+
+        //$selectedPermission = PermissionRole::where('role_id', $role_id)->get();
+
+        $selectedPermission = Permission::join("role_has_permissions","role_has_permissions.permission_id","=","permissions.id")
+                              ->where("role_has_permissions.role_id",$role_id)
+                              ->get();
+
+
       	foreach($permissions as $permission) {
       		$permissionOption[$permission->id] = array();
       		$permissionOption[$permission->id]['id'] = $permission->id;
@@ -135,21 +143,36 @@ class RoleController extends Controller
 
             $permissionOption = $this->selectedPermission($id);
             $request = $request->toArray();
-             //hanya mengupdate yg berubah
+
+            return $request;
+            //return $permissionOption;
+
+            //hanya mengupdate yg berubah
             foreach($permissionOption as $permission) {
-                if($permission['selected'] == "on" and  !isset($request["permission".$permission['id']])) {
+                if($permission['selected'] == "on" and !isset($request["permission".$permission['id']])) {
                     //ada yang baru dihilangkan centangnya
-                    $permissionRole = PermissionRole::where([
-                                                             ['role_id', '=', $id],
-                                                             ['permission_id', '=', $permission['id']],
-                                                             ])->delete();
+                    // $permissionRole = PermissionRole::where([
+                    //                                          ['role_id', '=', $id],
+                    //                                          ['permission_id', '=', $permission['id']],
+                    //                                          ])->delete();
+
+                    // $permissionRole = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
+                    //                    ->delete();
+
+                    $permissionRole = DB::table("role_has_permissions")->where([
+                                                               ['role_id', '=', $id],
+                                                               ['permission_id', '=', $permission['id']],
+                                                               ])->delete();
                 }
                 elseif($permission['selected'] == "off" and isset($request["permission".$permission['id']])) {
                      //ada yg baru dicentang
-                    $permissionRole = new PermissionRole;
-                    $permissionRole->role_id = $id;
-                    $permissionRole->permission_id = $permission['id'];
-                    $permissionRole->save();
+                    // $permissionRole = new PermissionRole;
+                    // $permissionRole->role_id = $id;
+                    // $permissionRole->permission_id = $permission['id'];
+                    // $permissionRole->save();
+
+                    $role = Role::find($id);
+                    $role->syncPermissions($permission['id']);
                 }
             }
             Session::flash('update', 'Assign Role berhasil diperbaharui');

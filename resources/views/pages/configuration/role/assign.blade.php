@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('title', 'Role')
 
@@ -7,17 +7,17 @@
 <!-- Main Content -->
 <div class="page-wrapper">
     <div class="container-fluid">
-        
+
         <!-- Title -->
         <div class="row heading-bg">
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                <h5 class="txt-dark">{{ $tablename }} Role</h5>
+                <h5 class="txt-dark">Role</h5>
             </div>
             <!-- Breadcrumb -->
             <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                 <ol class="breadcrumb">
                     <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i>&nbsp;Home</a></li>
-                    <li><a href="{{ route('permission.index') }}"><span>{{$tablename}} Role</span></a></li>
+                    <li><a href="{{ route('permission.index') }}"><span>Role</span></a></li>
                     <li class="active"><span>Assign</span></li>
                 </ol>
             </div>
@@ -33,24 +33,20 @@
                         <div class="pull-left">
                             <h6 class="panel-title txt-light"><i class="fa fa-wpforms"></i>&nbsp;&nbsp;Form Role</h6>
                         </div>
-                        @include('partials.panel')
                         <div class="clearfix"></div>
                     </div>
 
                     <div id="collapse_1" class="panel-wrapper collapse in">
                         <div class="panel-body">
-                            {{-- <div class="row"> --}}
-                                {{-- <center>
-                                    <h3 style="padding-top: 1em">Role</h3>
-                                </center> --}}
-                                {!! Form::model($role,array('route' => ['role.assign.update',$role->id], 'method' => 'PUT', 'class' => 'form-horizontal', 'data-toggle' => 'validator', 'role' => 'form')) !!}
-                                    @include('pages.configuration.role.form-assign',array('submit' => 'Perbarui'))
-                                {!! Form::close() !!}
-                           {{--  </div> --}}
+                          
+                              {!! Form::model($role,array('route' => ['role.assign.update',$role->id], 'method' => 'PUT', 'class' => 'form-horizontal', 'data-toggle' => 'validator', 'role' => 'form')) !!}
+                                  @include('pages.configuration.role.form-assign',array('submit' => 'Perbarui'))
+                              {!! Form::close() !!}
+
                         </div>
                     </div>
-                    
-                </div>  
+
+                </div>
             </div>
         </div>
         <!-- /Row -->

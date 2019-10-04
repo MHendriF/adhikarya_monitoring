@@ -6,7 +6,7 @@
                     {!! Form::label('type_role','Role', array('class' => 'control-label mb-10')) !!}
                     <select onchange="location = this.value;" class="form-control select2">
                         @foreach($roles as $role)
-                            <option value="{{url('')}}/config/role/{{$role->id}}/edit" {{$role->id == $selectedRole ? "selected" : ""}}>{{$role->name}}</option>
+                            <option value="{{url('')}}/config/role/{{$role->id}}/assign" {{$role->id == $selectedRole ? "selected" : ""}}>{{$role->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -41,39 +41,3 @@
         {!! Form::submit('Perbarui', array('class' => 'btn btn-success')) !!}
     </center>
 </div>
-
-
-{{-- <div class="panel-wrapper collapse in">
-    <div class="panel-body">         
-        @foreach($permissionOption as $permission)
-            <div class="col-sm-3">
-                <div class="form-group mb-0">
-                    <div class="col-sm-8">
-                        <div class="checkbox checkbox-success">
-                            <input name="permission{{$permission['id']}}" type="checkbox" {{$permission['selected'] == 'on' ? 'checked' : ''}}>
-                            <label>{{$permission['name']}}</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-
-        <div class="col-sm-12">
-            <div class="row pa-30 pb-15">
-                <center>
-                    <input type="button" id="check" class="btn btn-primary" value="Check All" />
-                    <input type="button" id="uncheck" class="btn btn-primary" value="Uncheck All" />
-                </center>
-            </div>
-        </div>
-
-        <div class="col-sm-12">
-            <div class="form-group">
-                <center>
-                    {{ Form::submit('Update', array('class' => 'btn btn-success')) }}
-                </center>
-            </div>
-        </div>
-    </div>
-</div>
- --}}
