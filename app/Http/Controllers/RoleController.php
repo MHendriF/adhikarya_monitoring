@@ -143,36 +143,18 @@ class RoleController extends Controller
 
             $permissionOption = $this->selectedPermission($id);
             $request = $request->toArray();
-
-            return $request;
-            //return $permissionOption;
+            $role = Role::find($id);
 
             //hanya mengupdate yg berubah
             foreach($permissionOption as $permission) {
-                if($permission['selected'] == "on" and !isset($request["permission".$permission['id']])) {
+
+                if($permission['selected'] == "on" and !isset($request[$permission['name']])) {
                     //ada yang baru dihilangkan centangnya
-                    // $permissionRole = PermissionRole::where([
-                    //                                          ['role_id', '=', $id],
-                    //                                          ['permission_id', '=', $permission['id']],
-                    //                                          ])->delete();
-
-                    // $permissionRole = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
-                    //                    ->delete();
-
-                    $permissionRole = DB::table("role_has_permissions")->where([
-                                                               ['role_id', '=', $id],
-                                                               ['permission_id', '=', $permission['id']],
-                                                               ])->delete();
+                    $role->revokePermissionTo($permission['name']);
                 }
-                elseif($permission['selected'] == "off" and isset($request["permission".$permission['id']])) {
-                     //ada yg baru dicentang
-                    // $permissionRole = new PermissionRole;
-                    // $permissionRole->role_id = $id;
-                    // $permissionRole->permission_id = $permission['id'];
-                    // $permissionRole->save();
-
-                    $role = Role::find($id);
-                    $role->syncPermissions($permission['id']);
+                elseif(isset($request[$permission['name']])) {
+                    //ada yg baru dicentang
+                    $role->givePermissionTo($permission['name']);
                 }
             }
             Session::flash('update', 'Assign Role berhasil diperbaharui');

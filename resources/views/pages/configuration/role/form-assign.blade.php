@@ -22,7 +22,7 @@
     @foreach($permissionOption as $permission)
         <div class="col-sm-6 col-md-4 col-lg-3 pl-20">
             <div class="checkbox checkbox-primary ">
-                <input name="permission{{$permission['id']}}" type="checkbox" {{$permission['selected'] == 'on' ? 'checked' : ''}}>
+                <input name="{{$permission['name']}}" type="checkbox" {{$permission['selected'] == 'on' ? 'checked' : ''}}>
                 <label>{{$permission['name']}}</label>
             </div>
         </div>
