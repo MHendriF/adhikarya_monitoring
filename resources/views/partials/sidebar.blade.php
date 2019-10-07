@@ -6,16 +6,19 @@
 					<i class="zmdi zmdi-more"></i>
 				</li>
 				<li>
-					<a  href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">DASHBOARD</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+					<a  href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-home mr-20"></i><span class="right-nav-text">DASHBOARD</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="dashboard_dr" class="collapse collapse-level-1">
 						<li>
 							<a class="active-page" href="{{ route('dashboard')}}">Main</a>
 						</li>
-
 					</ul>
 				</li>
+				<li class="navigation-header">
+					<span>Document</span>
+					<i class="zmdi zmdi-more"></i>
+				</li>
 				<li>
-					<a href="javascript:void(0);" data-toggle="collapse" data-target="#eng"><div class="pull-left"><i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">ENGINEERING</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+					<a href="javascript:void(0);" data-toggle="collapse" data-target="#eng"><div class="pull-left"><i class="zmdi zmdi-memory mr-20"></i><span class="right-nav-text">ENGINEERING</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="eng" class="collapse collapse-level-1">
 						<li>
 							<a href="{{ route('engineering.index') }}">List Dokumen</a>
@@ -26,7 +29,7 @@
 					</ul>
 				</li>
 				<li>
-					<a href="javascript:void(0);" data-toggle="collapse" data-target="#prod"><div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">PRODUCTION</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+					<a href="javascript:void(0);" data-toggle="collapse" data-target="#prod"><div class="pull-left"><i class="zmdi zmdi-store mr-20"></i><span class="right-nav-text">PRODUCTION</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="prod" class="collapse collapse-level-1">
 						<li>
 							<a href="#">List Dokumen</a>
@@ -37,7 +40,7 @@
 					</ul>
 				</li>
 				<li>
-					<a href="javascript:void(0);" data-toggle="collapse" data-target="#finance"><div class="pull-left"><i class="zmdi zmdi-flag mr-20"></i><span class="right-nav-text">FINANCE</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+					<a href="javascript:void(0);" data-toggle="collapse" data-target="#finance"><div class="pull-left"><i class="zmdi zmdi-card mr-20"></i><span class="right-nav-text">FINANCE</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="finance" class="collapse collapse-level-1">
 						<li>
 							<a href="#">List Dokumen</a>
@@ -48,7 +51,7 @@
 					</ul>
 				</li>
 				<li>
-					<a href="javascript:void(0);" data-toggle="collapse" data-target="#sekre"><div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">SEKRETARIAT</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+					<a href="javascript:void(0);" data-toggle="collapse" data-target="#sekre"><div class="pull-left"><i class="zmdi zmdi-balance mr-20"></i><span class="right-nav-text">SEKRETARIAT</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="sekre" class="collapse collapse-level-1">
 						<li>
 							<a href="#">List Dokumen</a>
@@ -59,7 +62,7 @@
 					</ul>
 				</li>
 				<li>
-					<a href="javascript:void(0);" data-toggle="collapse" data-target="#mutu"><div class="pull-left"><i class="zmdi zmdi-menu mr-20"></i><span class="right-nav-text">MUTU</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+					<a href="javascript:void(0);" data-toggle="collapse" data-target="#mutu"><div class="pull-left"><i class="zmdi zmdi-check-circle mr-20"></i><span class="right-nav-text">MUTU</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="mutu" class="collapse collapse-level-1">
 						<li>
 							<a href="#">List Dokumen</a>
@@ -70,7 +73,7 @@
 					</ul>
 				</li>
 				<li>
-					<a href="javascript:void(0);" data-toggle="collapse" data-target="#hse"><div class="pull-left"><i class="zmdi zmdi-menu mr-20"></i><span class="right-nav-text">HSE / K3L</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+					<a href="javascript:void(0);" data-toggle="collapse" data-target="#hse"><div class="pull-left"><i class="zmdi zmdi-hospital mr-20"></i><span class="right-nav-text">HSE / K3L</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="hse" class="collapse collapse-level-1">
 						<li>
 							<a href="#">List Dokumen</a>
@@ -95,7 +98,7 @@
 						</ul>
 					</li> -->
 					<li class="navigation-header">
-						<span>Konfiguration</span>
+						<span>Configuration</span>
 						<i class="zmdi zmdi-more"></i>
 					</li>
 

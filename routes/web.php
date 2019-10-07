@@ -28,6 +28,7 @@ Route::group(['namespace' => 'Authenticate'], function() {
 Route::group(['middleware' => ['auth']], function()
 {
 		Route::get('dashboard', array('as' => 'dashboard','uses' =>'DashboardController@getDashboard'));
+		Route::get('dashboard/ajax', array('as' => 'dashboard.ajax','uses' =>'DashboardController@getDocument'));
 		Route::get('sendReminder', array('as' => 'sendReminder','uses' =>'DashboardController@sendReminder'));
 
 		Route::get('user/ajax', array('as' => 'user.ajax','uses' =>'UserController@getUser'));

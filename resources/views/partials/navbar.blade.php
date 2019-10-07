@@ -32,6 +32,10 @@
 							</li>
 							<li class="divider"></li>
 							<li>
+								<a href="#"><i class="fa fa-calendar"></i><span>{{ $today }}</span></a>
+							</li>
+							<li class="divider"></li>
+							<li>
 								<a href="{!! route('postLogout') !!}"><i class="zmdi zmdi-power"></i><span>Sign Out</span></a>
 							</li>
 						</ul>
