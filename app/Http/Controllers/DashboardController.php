@@ -6,8 +6,8 @@ use Auth;
 use Mail;
 use Session;
 
-use App\Mail\Reminder;
 use App\User;
+use App\Mail\Reminder;
 use Carbon\Carbon;
 
 use Illuminate\Http\Request;

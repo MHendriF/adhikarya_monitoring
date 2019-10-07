@@ -53,6 +53,18 @@ Route::group(['middleware' => ['auth']], function()
 
 		});
 
+		Route::group(['prefix' => 'document'], function() {
+
+			Route::get('engineering/ajax', array('as' => 'engineering.ajax','uses' =>'EngineeringDocumentController@getDocument'));
+			Route::resource('engineering', 'EngineeringDocumentController');
+			Route::get('engineering/{id}/delete',array('as'=> 'engineering.delete','uses' => 'EngineeringDocumentController@destroy'));
+
+			Route::get('production/ajax', array('as' => 'production.ajax','uses' =>'ProductionDocumentController@getDocument'));
+			Route::resource('production', 'ProductionDocumentController');
+			Route::get('production/{id}/delete',array('as'=> 'production.delete','uses' => 'ProductionDocumentController@destroy'));
+
+		});
+
 		Route::group(['prefix' => 'config'], function() {
 
 			Route::get('permission/ajax', array('as' => 'permission.ajax','uses' =>'PermissionController@getPermission'));

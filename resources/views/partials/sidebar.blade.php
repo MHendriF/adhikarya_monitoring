@@ -18,10 +18,10 @@
 					<a href="javascript:void(0);" data-toggle="collapse" data-target="#eng"><div class="pull-left"><i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">ENGINEERING</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="eng" class="collapse collapse-level-1">
 						<li>
-							<a href="#">List A</a>
+							<a href="{{ route('engineering.index') }}">List Dokumen</a>
 						</li>
 						<li>
-							<a href="#">List B</a>
+							<a href="{{ route('engineering.create') }}">Input Dokumen</a>
 						</li>
 					</ul>
 				</li>
@@ -29,24 +29,32 @@
 					<a href="javascript:void(0);" data-toggle="collapse" data-target="#prod"><div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">PRODUCTION</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="prod" class="collapse collapse-level-1">
 						<li>
-							<a href="#">A</a>
+							<a href="#">List Dokumen</a>
+						</li>
+						<li>
+							<a href="#">Input Dokumen</a>
 						</li>
 					</ul>
 				</li>
 				<li>
-					<a href="#"><div class="pull-left"><i class="zmdi zmdi-flag mr-20"></i><span class="right-nav-text">FINANCE</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
+					<a href="javascript:void(0);" data-toggle="collapse" data-target="#finance"><div class="pull-left"><i class="zmdi zmdi-flag mr-20"></i><span class="right-nav-text">FINANCE</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+					<ul id="finance" class="collapse collapse-level-1">
+						<li>
+							<a href="#">List Dokumen</a>
+						</li>
+						<li>
+							<a href="#">Input Dokumen</a>
+						</li>
+					</ul>
 				</li>
 				<li>
 					<a href="javascript:void(0);" data-toggle="collapse" data-target="#sekre"><div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">SEKRETARIAT</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="sekre" class="collapse collapse-level-1">
 						<li>
-							<a href="#">1</a>
+							<a href="#">List Dokumen</a>
 						</li>
 						<li>
-							<a href="#">2</a>
-						</li>
-						<li>
-							<a href="#">3</a>
+							<a href="#">Input Dokumen</a>
 						</li>
 					</ul>
 				</li>
@@ -54,10 +62,10 @@
 					<a href="javascript:void(0);" data-toggle="collapse" data-target="#mutu"><div class="pull-left"><i class="zmdi zmdi-menu mr-20"></i><span class="right-nav-text">MUTU</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="mutu" class="collapse collapse-level-1">
 						<li>
-							<a href="#">A</a>
+							<a href="#">List Dokumen</a>
 						</li>
 						<li>
-							<a href="#">B</a>
+							<a href="#">Input Dokumen</a>
 						</li>
 					</ul>
 				</li>
@@ -65,10 +73,10 @@
 					<a href="javascript:void(0);" data-toggle="collapse" data-target="#hse"><div class="pull-left"><i class="zmdi zmdi-menu mr-20"></i><span class="right-nav-text">HSE / K3L</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="hse" class="collapse collapse-level-1">
 						<li>
-							<a href="#">A</a>
+							<a href="#">List Dokumen</a>
 						</li>
 						<li>
-							<a href="#">B</a>
+							<a href="#">Input Dokumen</a>
 						</li>
 					</ul>
 				</li>

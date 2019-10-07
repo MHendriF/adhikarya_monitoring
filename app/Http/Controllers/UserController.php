@@ -90,7 +90,6 @@ class UserController extends Controller
                       ->join('divisi', 'user.id_divisi', '=', 'divisi.id_divisi')
                       ->join('lembaga', 'user.id_lembaga', '=', 'lembaga.id_lembaga')
                       ->select('jabatan.nama_jabatan', 'divisi.nama_divisi', 'lembaga.nama_lembaga', 'user.*');
-
         return $model;
     }
 
