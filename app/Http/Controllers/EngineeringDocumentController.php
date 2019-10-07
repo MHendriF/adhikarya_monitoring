@@ -17,6 +17,15 @@ use Illuminate\Http\Request;
 
 class EngineeringDocumentController extends Controller
 {
+    protected $namadokumen = 'ENGINEERING';
+    protected $submenu;
+
+    function __construct()
+    {
+        $this->submenu = 'Engineering Document';
+        view()->share('submenu', $this->submenu);
+    }
+
     public function index()
     {
         if(Auth::user()) {
@@ -57,9 +66,7 @@ class EngineeringDocumentController extends Controller
     public function store(DocumentRequest $request)
     {
         if(Auth::user()) {
-
-            $namadokumen = "ENGINEERING";
-            $jenisdokumen = JenisDokumen::where('nama_jenis_dokumen', $namadokumen)->first();
+            $jenisdokumen = JenisDokumen::where('nama_jenis_dokumen', $this->namadokumen)->first();
 
             $codeBase = $jenisdokumen->kode_jenis_dokumen;
             $count = DB::table('dokumen')->count();
@@ -143,9 +150,8 @@ class EngineeringDocumentController extends Controller
 
     protected function queryfilter()
     {
-        $namadokumen = "ENGINEERING";
         $model = Dokumen::join('jenis_dokumen', 'dokumen.id_jenis_dokumen', '=', 'jenis_dokumen.id_jenis_dokumen')
-                          ->where('jenis_dokumen.nama_jenis_dokumen', '=', $namadokumen)
+                          ->where('jenis_dokumen.nama_jenis_dokumen', '=', $this->namadokumen)
                           ->select('dokumen.*');
         return $model;
     }

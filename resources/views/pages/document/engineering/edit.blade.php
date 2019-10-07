@@ -20,8 +20,8 @@
 			<!-- Breadcrumb -->
 			<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 				<ol class="breadcrumb">
-          <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-          <li><a href="{{ route('engineering.index') }}"><span>Engineering Document</span></a></li>
+          <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i>&nbsp;Dashboard</a></li>
+          <li><a href="{{ route('engineering.index') }}"><span>{{ $submenu }}</span></a></li>
           <li class="active"><span>Edit</span></li>
 				</ol>
 			</div>
@@ -37,7 +37,7 @@
 
           <div class="panel-heading">
   					<div class="pull-left">
-  						<h6 class="panel-title txt-light"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Form Engineering Document</h6>
+  						<h6 class="panel-title txt-light"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Form {{ $submenu }}</h6>
   					</div>
             <div class="clearfix"></div>
   				</div>
@@ -46,7 +46,7 @@
             <div class="panel-body">
               <div class="row">
                 <center>
-                  <h3 style="padding-top: 1em">Engineering Document</h3>
+                  <h3 style="padding-top: 1em">{{ $submenu }}</h3>
                 </center>
 
                 {!! Form::model($dokumen, array('route' => ['engineering.update', $dokumen->id_dokumen], 'method' => 'PUT', 'files' => true, 'class' => 'form-horizontal', 'data-toggle' => 'validator', 'role' => 'form')) !!}

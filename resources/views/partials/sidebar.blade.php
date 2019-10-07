@@ -32,10 +32,10 @@
 					<a href="javascript:void(0);" data-toggle="collapse" data-target="#prod"><div class="pull-left"><i class="zmdi zmdi-store mr-20"></i><span class="right-nav-text">PRODUCTION</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="prod" class="collapse collapse-level-1">
 						<li>
-							<a href="#">List Dokumen</a>
+							<a href="{{ route('production.index') }}">List Dokumen</a>
 						</li>
 						<li>
-							<a href="#">Input Dokumen</a>
+							<a href="{{ route('production.create') }}">Input Dokumen</a>
 						</li>
 					</ul>
 				</li>
@@ -43,10 +43,10 @@
 					<a href="javascript:void(0);" data-toggle="collapse" data-target="#finance"><div class="pull-left"><i class="zmdi zmdi-card mr-20"></i><span class="right-nav-text">FINANCE</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="finance" class="collapse collapse-level-1">
 						<li>
-							<a href="#">List Dokumen</a>
+							<a href="{{ route('finance.index') }}">List Dokumen</a>
 						</li>
 						<li>
-							<a href="#">Input Dokumen</a>
+							<a href="{{ route('finance.create') }}">Input Dokumen</a>
 						</li>
 					</ul>
 				</li>
@@ -54,10 +54,10 @@
 					<a href="javascript:void(0);" data-toggle="collapse" data-target="#sekre"><div class="pull-left"><i class="zmdi zmdi-balance mr-20"></i><span class="right-nav-text">SEKRETARIAT</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="sekre" class="collapse collapse-level-1">
 						<li>
-							<a href="#">List Dokumen</a>
+							<a href="{{ route('sekretariat.index') }}">List Dokumen</a>
 						</li>
 						<li>
-							<a href="#">Input Dokumen</a>
+							<a href="{{ route('sekretariat.create') }}">Input Dokumen</a>
 						</li>
 					</ul>
 				</li>
@@ -65,10 +65,10 @@
 					<a href="javascript:void(0);" data-toggle="collapse" data-target="#mutu"><div class="pull-left"><i class="zmdi zmdi-check-circle mr-20"></i><span class="right-nav-text">MUTU</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="mutu" class="collapse collapse-level-1">
 						<li>
-							<a href="#">List Dokumen</a>
+							<a href="{{ route('mutu.index') }}">List Dokumen</a>
 						</li>
 						<li>
-							<a href="#">Input Dokumen</a>
+							<a href="{{ route('mutu.create') }}">Input Dokumen</a>
 						</li>
 					</ul>
 				</li>
@@ -76,10 +76,10 @@
 					<a href="javascript:void(0);" data-toggle="collapse" data-target="#hse"><div class="pull-left"><i class="zmdi zmdi-hospital mr-20"></i><span class="right-nav-text">HSE / K3L</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="hse" class="collapse collapse-level-1">
 						<li>
-							<a href="#">List Dokumen</a>
+							<a href="{{ route('hse.index') }}">List Dokumen</a>
 						</li>
 						<li>
-							<a href="#">Input Dokumen</a>
+							<a href="{{ route('hse.create') }}">Input Dokumen</a>
 						</li>
 					</ul>
 				</li>

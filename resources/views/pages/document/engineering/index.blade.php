@@ -10,12 +10,12 @@
     <!-- Row -->
 		<div class="row heading-bg">
 		  <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-				<h5 class="txt-dark">Engineering Document List</h5>
+				<h5 class="txt-dark">{{ $submenu }} List</h5>
 			</div>
 			<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 				<ol class="breadcrumb">
-          <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-					<li class="active"><span>Engineering Document</span></li>
+          <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i>&nbsp;Dashboard</a></li>
+					<li class="active"><span>{{ $submenu }}</span></li>
 				</ol>
 			</div>
 		</div>
@@ -28,7 +28,7 @@
 					<div class="panel-heading">
 						<div class="clearfix"></div>
   					<div class="pull-left">
-  						<a href="{{ route('engineering.create') }}" class="btn btn-rounded btn-warning"><i class="fa fa-plus"></i> Add Engineering Document</a>
+  						<a href="{{ route('engineering.create') }}" class="btn btn-rounded btn-warning"><i class="fa fa-plus"></i> Add {{ $submenu }}</a>
   					</div>
   				</div>
 

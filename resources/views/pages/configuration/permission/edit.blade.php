@@ -7,7 +7,7 @@
 <!-- Main Content -->
 <div class="page-wrapper">
     <div class="container-fluid">
-        
+
         <!-- Title -->
         <div class="row heading-bg">
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
@@ -16,7 +16,7 @@
             <!-- Breadcrumb -->
             <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                 <ol class="breadcrumb">
-                    <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i>&nbsp;Home</a></li>
+                    <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i>&nbsp;Dashboard</a></li>
                     <li><a href="{{ route('permission.index') }}"><span>{{$tablename}} Permission</span></a></li>
                     <li class="active"><span>Edit</span></li>
                 </ol>
@@ -49,8 +49,8 @@
                             </div>
                         </div>
                     </div>
-                    
-                </div>  
+
+                </div>
             </div>
         </div>
         <!-- /Row -->

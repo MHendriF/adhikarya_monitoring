@@ -64,6 +64,22 @@ Route::group(['middleware' => ['auth']], function()
 			Route::resource('production', 'ProductionDocumentController');
 			Route::get('production/{id}/delete',array('as'=> 'production.delete','uses' => 'ProductionDocumentController@destroy'));
 
+			Route::get('finance/ajax', array('as' => 'finance.ajax','uses' =>'FinanceDocumentController@getDocument'));
+			Route::resource('finance', 'FinanceDocumentController');
+			Route::get('finance/{id}/delete',array('as'=> 'finance.delete','uses' => 'FinanceDocumentController@destroy'));
+
+			Route::get('mutu/ajax', array('as' => 'mutu.ajax','uses' =>'MutuDocumentController@getDocument'));
+			Route::resource('mutu', 'MutuDocumentController');
+			Route::get('mutu/{id}/delete',array('as'=> 'mutu.delete','uses' => 'MutuDocumentController@destroy'));
+
+			Route::get('sekretariat/ajax', array('as' => 'sekretariat.ajax','uses' =>'SekretariatDocumentController@getDocument'));
+			Route::resource('sekretariat', 'SekretariatDocumentController');
+			Route::get('sekretariat/{id}/delete',array('as'=> 'sekretariat.delete','uses' => 'SekretariatDocumentController@destroy'));
+
+			Route::get('hse/ajax', array('as' => 'hse.ajax','uses' =>'HseDocumentController@getDocument'));
+			Route::resource('hse', 'HseDocumentController');
+			Route::get('hse/{id}/delete',array('as'=> 'hse.delete','uses' => 'HseDocumentController@destroy'));
+
 		});
 
 		Route::group(['prefix' => 'config'], function() {
