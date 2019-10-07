@@ -57,7 +57,7 @@
           <span >
             © 2019 . Adhi Karya. All rights reserved.
           </span>
-          <p>Versi: 1.0.1</p></center>
+          <p>Versi: 1.0.0</p></center>
         </div>
       </div>
 

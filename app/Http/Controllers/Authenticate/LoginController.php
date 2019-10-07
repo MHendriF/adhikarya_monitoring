@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\User;
 use Carbon\Carbon;
 
@@ -61,7 +62,7 @@ class LoginController extends Controller
         }
         else
         {
-            $reset_password_code = str_random(20);
+            $reset_password_code = Str::random(20);
             $user->reset_password_code = $reset_password_code;
             $user->save();
 

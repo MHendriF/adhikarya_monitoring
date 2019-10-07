@@ -28,6 +28,7 @@ Route::group(['namespace' => 'Authenticate'], function() {
 Route::group(['middleware' => ['auth']], function()
 {
 		Route::get('dashboard', array('as' => 'dashboard','uses' =>'DashboardController@getDashboard'));
+		Route::get('sendReminder', array('as' => 'sendReminder','uses' =>'DashboardController@sendReminder'));
 
 		Route::get('user/ajax', array('as' => 'user.ajax','uses' =>'UserController@getUser'));
 		Route::resource('user', 'UserController');
@@ -63,7 +64,7 @@ Route::group(['middleware' => ['auth']], function()
 			Route::get('role/{id}/assign',array('as'=> 'role.assign','uses' => 'RoleController@assign'));
 			Route::put('role/{id}/assign/update',array('as'=> 'role.assign.update','uses' => 'RoleController@assignUpdate'));
 			Route::get('role/{id}/delete',array('as'=> 'role.delete','uses' => 'RoleController@destroy'));
-			
+
 		});
 
 });
