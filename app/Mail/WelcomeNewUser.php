@@ -2,14 +2,12 @@
 
 namespace App\Mail;
 
-use App\User;
-
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class Reminder extends Mailable
+class WelcomeNewUser extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -20,7 +18,7 @@ class Reminder extends Mailable
      */
     public function __construct()
     {
-        //$this->user = $user;
+        //
     }
 
     /**
@@ -30,7 +28,7 @@ class Reminder extends Mailable
      */
     public function build()
     {
-        return $this->subject('Reminder Dokumen')
-                    ->markdown('emails.reminder');
+        return $this->subject('Welcome To Sistem Monitoring Dokumen')
+                    ->markdown('emails.welcome_user');
     }
 }

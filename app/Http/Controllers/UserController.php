@@ -14,8 +14,12 @@ use App\Models\Divisi;
 use App\Models\Jabatan;
 use App\Models\Lembaga;
 
+use App\Mail\ResetPasswordCode;
+use App\Mail\WelcomeNewUser;
+use App\Http\Requests\UserRequest;
+
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -76,7 +80,7 @@ class UserController extends Controller
         if(Auth::user()->hasRole('Admin')) {
             $user = User::find($id);
 
-            $reset_password_code = str_random(20);
+            $reset_password_code = Str::random(20);
             $user->reset_password_code = $reset_password_code;
             $user->save();
 
@@ -123,6 +127,8 @@ class UserController extends Controller
            $user = $this->register($data);
 
            $user->assignRole($data['nama_role']);
+
+           Mail::to($request->email)->send(new WelcomeNewUser());
 
            Session::flash('create', 'New User was successfully added');
            return redirect()->route('user.index');

@@ -8,8 +8,11 @@ use Auth;
 use DB;
 use DataTables;
 
+use App\User;
 use App\Models\Dokumen;
 use App\Models\JenisDokumen;
+use App\Models\PicDokumen;
+use App\Models\SchedulerEmail;
 use Spatie\Permission\Models\Role;
 use App\Http\Requests\DocumentRequest;
 
@@ -55,7 +58,8 @@ class EngineeringDocumentController extends Controller
     public function create()
     {
         if(Auth::user()) {
-            return view('pages.document.engineering.create');
+            $listUser = User::pluck('nama_user', 'id_user')->all();
+            return view('pages.document.engineering.create', compact('listUser'));
         }
         else {
             Session::flash('error401', 'Full authentication is required to access this resource');
@@ -88,8 +92,13 @@ class EngineeringDocumentController extends Controller
                 'tanggal_diapprove_owner'    => $request->input('tanggal_diapprove_owner'),
                 'tanggal_diterima_adhikarya'    => $request->input('tanggal_diterima_adhikarya'),
             ));
-
             $dokumen->save();
+
+            $this->savePicDocument($dokumen, $request);
+
+            if (!empty($request->input('deadline_dokumen'))) {
+                $this->saveSchedulerEmail($dokumen, $request);
+            }
 
             Session::flash('create', 'New document was successfully added');
             return redirect()->route('engineering.index');
@@ -154,5 +163,25 @@ class EngineeringDocumentController extends Controller
                           ->where('jenis_dokumen.nama_jenis_dokumen', '=', $this->namadokumen)
                           ->select('dokumen.*');
         return $model;
+    }
+
+    protected function savePicDocument(Dokumen $dokumen, Request $request)
+    {
+        $pic_dokumen = new PicDokumen(array(
+          'id_user'     => $request->input('id_user'),
+          'id_dokumen'     => $dokumen->id_dokumen,
+        ));
+        $pic_dokumen->save();
+    }
+
+    protected function saveSchedulerEmail(Dokumen $dokumen, Request $request)
+    {
+        $scheduler = new SchedulerEmail(array(
+          'id_user'     => $request->input('id_user'),
+          'id_dokumen'     => $dokumen->id_dokumen,
+          'schedule_time' => $dokumen->deadline_dokumen,
+          'status_dokumen' => "",
+        ));
+        $scheduler->save();
     }
 }

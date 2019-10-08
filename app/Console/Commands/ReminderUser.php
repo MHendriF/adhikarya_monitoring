@@ -42,7 +42,7 @@ class ReminderUser extends Command
     public function handle()
     {
         $user = User::find(1);
-        Mail::to($user->email)->send(new Reminder($user));
+        Mail::to($user->email)->send(new Reminder());
         echo "Operation done";
     }
 }

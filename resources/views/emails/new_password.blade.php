@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Ahsana Property Syariah</title>
+        <title>Adhi Karya</title>
 
     </head>
     <body style="height: 100%;margin: 0;padding: 0;width: 100%;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FAFAFA;">
@@ -37,7 +37,7 @@
                                                     <tr>
                                                     <td class="mcnImageContent" valign="top" style="padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom: 0;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
 
-                                                        <img align="center" alt="" src="{{ asset('/assets/tema/ahsana/img/logo_png.png') }}" width="54" style="max-width: 54px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" class="mcnImage">
+                                                        <img align="center" alt="" src="{{ asset('/assets/theme/img/logo_adhi.png') }}" width="54" style="max-width: 54px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" class="mcnImage">
                                                     </td>
                                                     </tr>
                                                     </tbody>
@@ -114,7 +114,7 @@
                                             <tbody>
                                             <tr>
                                             <td valign="top" class="mcnTextContent" style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #656565;font-family: Helvetica;font-size: 12px;line-height: 150%;text-align: center;">
-                                                    <em>Copyright © 2019 PT. Ahsana Property Syariah.&nbsp;All rights reserved.</em>
+                                                    <em>Copyright © 2019 PT. Adhi Karya.&nbsp;All rights reserved.</em>
                                             </td>
                                             </tr>
                                             </tbody>

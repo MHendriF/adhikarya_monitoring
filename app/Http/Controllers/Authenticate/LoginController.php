@@ -83,6 +83,9 @@ class LoginController extends Controller
         else{
             $user->password = bcrypt($request->password);
             $user->save();
+
+            Auth::logout();
+            
             Session::flash('success', 'Password successfully changed.');
             return redirect()->route('login');
         }

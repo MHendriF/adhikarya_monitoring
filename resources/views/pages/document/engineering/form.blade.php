@@ -3,6 +3,12 @@
         <div class="panel-body">
             <div class="form-wrap">
                 <div class="form-group">
+                    {!! Form::label('id_user','Pic Dokumen', array('class' => 'col-sm-4 control-label')) !!}
+                    <div class="col-sm-8">
+                        {!! Form::select('id_user', $listUser, null, array('class' => 'form-control', 'required')) !!}
+                    </div>
+                </div>
+                <div class="form-group">
                     {!! Form::label('nama_dokumen','Nama Dokumen', array('class' => 'col-sm-4 control-label')) !!}
                     <div class="col-sm-8">
                         {!! Form::text('nama_dokumen',null, array('class' => 'form-control', 'required')) !!}

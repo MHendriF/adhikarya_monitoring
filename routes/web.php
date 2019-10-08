@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('/test', array('as' => 'test', 'uses' => 'TestController@getScheduler'));
+
+
 Route::get('/', function () {
 	return Redirect::to('/Alogin');
 });

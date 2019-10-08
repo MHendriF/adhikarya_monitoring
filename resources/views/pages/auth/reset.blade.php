@@ -55,7 +55,7 @@
       <div class="card-footer">
         <center><div style="color: #fff; font-size: 10px;color: #fff">
           <span >
-            © 2019 . Adhi Karya. All rights reserved.
+            © 2019 PT. Adhi Karya. All rights reserved.
           </span>
           <p>Versi: 1.0.0</p></center>
         </div>
