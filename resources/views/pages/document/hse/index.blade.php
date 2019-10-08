@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Engineering Document List')
+@section('title', $submenu)
 
 @section('content')
 <!-- Main Content -->
@@ -28,7 +28,7 @@
 					<div class="panel-heading">
 						<div class="clearfix"></div>
   					<div class="pull-left">
-  						<a href="{{ route('engineering.create') }}" class="btn btn-rounded btn-warning"><i class="fa fa-plus"></i> Add {{ $submenu }}</a>
+  						<a href="{{ route('hse.create') }}" class="btn btn-rounded btn-warning"><i class="fa fa-plus"></i> Add {{ $submenu }}</a>
   					</div>
   				</div>
 

@@ -16,6 +16,14 @@ use Illuminate\Http\Request;
 
 class JabatanController extends Controller
 {
+    protected $submenu;
+
+    function __construct()
+    {
+        $this->submenu = 'Jabatan';
+        view()->share('submenu', $this->submenu);
+    }
+
     public function index()
     {
         if(Auth::user()) {

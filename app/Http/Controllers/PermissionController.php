@@ -18,6 +18,14 @@ use Illuminate\Http\Request;
 
 class PermissionController extends Controller
 {
+    protected $submenu;
+
+    function __construct()
+    {
+        $this->submenu = 'Permission';
+        view()->share('submenu', $this->submenu);
+    }
+
     public function index()
     {
         if(Auth::user()) {

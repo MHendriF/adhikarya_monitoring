@@ -16,6 +16,15 @@ use Illuminate\Http\Request;
 
 class LembagaController extends Controller
 {
+
+    protected $submenu;
+
+    function __construct()
+    {
+        $this->submenu = 'Lembaga';
+        view()->share('submenu', $this->submenu);
+    }
+
     public function index()
     {
         if(Auth::user()) {

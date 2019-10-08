@@ -20,6 +20,13 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+    protected $submenu;
+
+    function __construct()
+    {
+        $this->submenu = 'User';
+        view()->share('submenu', $this->submenu);
+    }
 
     public function index()
     {

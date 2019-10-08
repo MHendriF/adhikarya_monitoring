@@ -18,6 +18,14 @@ use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
+    protected $submenu;
+
+    function __construct()
+    {
+        $this->submenu = 'Role';
+        view()->share('submenu', $this->submenu);
+    }
+
     public function selectedPermission($role_id) {
       	$permissionOption = array();
       	$permissions = Permission::all();

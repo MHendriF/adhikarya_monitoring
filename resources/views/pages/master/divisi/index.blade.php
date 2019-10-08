@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Divisi List')
+@section('title', $submenu)
 
 @section('content')
 <!-- Main Content -->
@@ -15,7 +15,7 @@
 			<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 				<ol class="breadcrumb">
           <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i>&nbsp;Dashboard</a></li>
-					<li class="active"><span>Divisi</span></li>
+					<li class="active"><span>{{ $submenu }}</span></li>
 				</ol>
 			</div>
 		</div>
@@ -28,7 +28,7 @@
 					<div class="panel-heading">
 						<div class="clearfix"></div>
   					<div class="pull-left">
-  						<a href="{{ route('divisi.create') }}" class="btn btn-rounded btn-warning"><i class="fa fa-plus"></i> Add New Divisi</a>
+  						<a href="{{ route('divisi.create') }}" class="btn btn-rounded btn-warning"><i class="fa fa-plus"></i> Add New {{ $submenu }}</a>
   					</div>
   				</div>
 

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Engineering Document List')
+@section('title', $submenu)
 
 @section('content')
 <!-- Main Content -->

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Permission')
+@section('title', $submenu)
 
 @section('content')
 
@@ -11,13 +11,13 @@
         <!-- Title -->
         <div class="row heading-bg">
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                <h5 class="txt-dark">Permission</h5>
+                <h5 class="txt-dark">{{ $submenu }} List</h5>
             </div>
             <!-- Breadcrumb -->
             <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                 <ol class="breadcrumb">
                     <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i>&nbsp;Dashboard</a></li>
-                    <li class="active"><span>Permission</span></li>
+                    <li class="active"><span>{{ $submenu }}</span></li>
                 </ol>
             </div>
             <!-- /Breadcrumb -->
@@ -30,7 +30,7 @@
                  <div class="panel panel-default card-view">
                    <div class="panel-heading">
                         <div class="pull-left">
-                            <a href="{{ route('permission.create') }}" class="btn btn-outline btn-success"><i class="fa fa-plus">&nbsp; Create</i></a>
+                            <a href="{{ route('permission.create') }}" class="btn btn-outline btn-success"><i class="fa fa-plus">&nbsp;Add {{ $submenu }}</i></a>
                         </div>
                         <div class="clearfix"></div>
                     </div>

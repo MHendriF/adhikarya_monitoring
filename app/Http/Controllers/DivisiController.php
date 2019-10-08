@@ -16,6 +16,14 @@ use Illuminate\Http\Request;
 
 class DivisiController extends Controller
 {
+    protected $submenu;
+
+    function __construct()
+    {
+        $this->submenu = 'Divisi';
+        view()->share('submenu', $this->submenu);
+    }
+
     public function index()
     {
         if(Auth::user()) {

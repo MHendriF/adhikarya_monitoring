@@ -5,8 +5,7 @@
     <link href="{{ asset("/assets/theme/vendors/bower_components/dropify/dist/css/dropify.min.css") }}" rel="stylesheet" type="text/css"/>
 @endsection
 
-
-@section('title', 'Jabatan Edit')
+@section('title', $submenu)
 
 @section('content')
 <!-- Main Content -->
@@ -15,13 +14,13 @@
 
 		<div class="row heading-bg">
 		  <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-				<h5 class="txt-dark">Jabatan Edit</h5>
+				<h5 class="txt-dark">{{ $submenu }} Edit</h5>
 			</div>
 			<!-- Breadcrumb -->
 			<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 				<ol class="breadcrumb">
           <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i>&nbsp;Dashboard</a></li>
-          <li><a href="{{ route('jabatan.index') }}"><span>Jabatan</span></a></li>
+          <li><a href="{{ route('jabatan.index') }}"><span>{{ $submenu }}</span></a></li>
           <li class="active"><span>Edit</span></li>
 				</ol>
 			</div>
@@ -37,7 +36,7 @@
 
           <div class="panel-heading">
   					<div class="pull-left">
-  						<h6 class="panel-title txt-light"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Form Jabatan</h6>
+  						<h6 class="panel-title txt-light"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Form {{ $submenu }}</h6>
   					</div>
             <div class="clearfix"></div>
   				</div>
@@ -46,7 +45,7 @@
             <div class="panel-body">
               <div class="row">
                 <center>
-                  <h3 style="padding-top: 1em">Jabatan</h3>
+                  <h3 style="padding-top: 1em">{{ $submenu }}</h3>
                 </center>
 
                 {!! Form::model($jabatan, array('route' => ['jabatan.update', $jabatan->id_jabatan], 'method' => 'PUT', 'files' => true, 'class' => 'form-horizontal', 'data-toggle' => 'validator', 'role' => 'form')) !!}

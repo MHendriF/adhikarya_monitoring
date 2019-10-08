@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'User List')
+@section('title', $submenu)
 
 @section('content')
 <!-- Main Content -->

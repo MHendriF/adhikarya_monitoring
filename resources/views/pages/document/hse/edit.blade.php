@@ -5,8 +5,7 @@
     <link href="{{ asset("/assets/theme/vendors/bower_components/dropify/dist/css/dropify.min.css") }}" rel="stylesheet" type="text/css"/>
 @endsection
 
-
-@section('title', 'Engineering Document Edit')
+@section('title', $submenu)
 
 @section('content')
 <!-- Main Content -->
@@ -15,7 +14,7 @@
 
 		<div class="row heading-bg">
 		  <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-				<h5 class="txt-dark">Engineering Document Edit</h5>
+				<h5 class="txt-dark">{{ $submenu }} Edit</h5>
 			</div>
 			<!-- Breadcrumb -->
 			<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">

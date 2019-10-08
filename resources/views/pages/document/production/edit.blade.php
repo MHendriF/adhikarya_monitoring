@@ -5,8 +5,7 @@
     <link href="{{ asset("/assets/theme/vendors/bower_components/dropify/dist/css/dropify.min.css") }}" rel="stylesheet" type="text/css"/>
 @endsection
 
-
-@section('title', 'Engineering Document Edit')
+@section('title', $submenu)
 
 @section('content')
 <!-- Main Content -->

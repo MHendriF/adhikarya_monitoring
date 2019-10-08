@@ -5,7 +5,7 @@
     <link href="{{ asset("/assets/theme/vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css") }}" rel="stylesheet" type="text/css"/>
 @endsection
 
-@section('title', 'User Create')
+@section('title', $submenu)
 
 @section('content')
 <!-- Main Content -->
