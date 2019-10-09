@@ -19,7 +19,7 @@ class Dokumen extends Model
       'tanggal_pengajuan', 'tanggal_diterima_mk', 'tanggal_diapprove_mk', 'tanggal_diapprove_owner', 'tanggal_diterima_adhikarya'
     ];
 
-    public function user() {
-        return $this->hasMany('App\User');
+    public function jenisdokumen() {
+      return $this->belongsTo('App\Models\JenisDokumen', 'id_jenis_dokumen', 'id_jenis_dokumen');
     }
 }

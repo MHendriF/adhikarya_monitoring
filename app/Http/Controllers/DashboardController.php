@@ -7,13 +7,12 @@ use Mail;
 use Session;
 use DB;
 use DataTables;
-use Input;
 
 use Carbon\Carbon;
 
 use App\User;
 use App\Mail\Reminder;
-
+use App\Traits\DokumenTrait;
 use App\Models\Dokumen;
 use App\Models\JenisDokumen;
 use Spatie\Permission\Models\Role;
@@ -22,6 +21,8 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+    use DokumenTrait;
+
     public function getDashboard()
     {
         $documents = JenisDokumen::all();
@@ -39,13 +40,15 @@ class DashboardController extends Controller
     public function getDocument(Request $request, Datatables $datatables)
     {
         if(Auth::user()) {
-            $model = $this->queryfilter($request);
-            return DataTables::eloquent($model)
+            //$model = $this->queryfilter($request);
+            $model = $this->getDocumentTrait($request);
+
+            return DataTables::of($model)
                               ->addIndexColumn()
-                              ->addColumn('action', function($dokumen){
+                              ->addColumn('action', function($model){
                                     return
-                                        '<a href="'. route('engineering.edit',$dokumen->id_dokumen) .'" data-toggle="tooltip" title="Edit" class="btn btn-success btn-sm btn-icon-anim btn-square mr-5" style="display: unset;"><i class="fa fa-pencil" style="font-size: 14px;"></i></a>'.
-                                        '<a href="'. route('engineering.delete',$dokumen->id_dokumen) .'" id="delete" data-toggle="tooltip" title="Delete" class="btn btn-danger btn-sm btn-icon-anim btn-square mr-5" style="display: unset;"><i class="fa fa-trash" style="font-size: 14px;"></i></a>';
+                                        '<a href="'. url('/document/').'/'.$model['tipe_dokumen'].'/'.$model['id_dokumen'].'/edit' .'" data-toggle="tooltip" title="Edit" class="btn btn-success btn-sm btn-icon-anim btn-square mr-5" style="display: unset;"><i class="fa fa-pencil" style="font-size: 14px;"></i></a>'.
+                                        '<a href="'. url('/document/').'/'.$model['tipe_dokumen'].'/'.$model['id_dokumen'].'/delete' .'" id="delete" data-toggle="tooltip" title="Delete" class="btn btn-danger btn-sm btn-icon-anim btn-square mr-5" style="display: unset;"><i class="fa fa-trash" style="font-size: 14px;"></i></a>';
                                 })
                               ->make(true);
         }
@@ -120,7 +123,7 @@ class DashboardController extends Controller
                 }
             }
         }
-
+        
         return $model;
     }
 }

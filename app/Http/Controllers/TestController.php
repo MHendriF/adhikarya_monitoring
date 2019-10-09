@@ -7,6 +7,8 @@ use Mail;
 use Carbon\Carbon;
 
 use App\User;
+use App\Models\Dokumen;
+use App\Models\JenisDokumen;
 use App\Models\SchedulerEmail;
 use App\Mail\Reminder;
 
@@ -61,5 +63,12 @@ class TestController extends Controller
         }else {
             return "sama";
         }
+    }
+
+    public function testData3()
+    {
+        $dokumen = Dokumen::all();
+
+        return $dokumen[0]->jenisdokumen->nama_jenis_dokumen;
     }
 }

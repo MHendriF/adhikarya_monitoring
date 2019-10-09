@@ -163,6 +163,9 @@ class EngineeringDocumentController extends Controller
             try {
                 if(Dokumen::where('id_dokumen', '=', $id)->delete())
                 {
+                    $pic_dokumen = PicDokumen::where('id_dokumen', '=', $id)->firstOrFail()->delete();
+                    SchedulerEmail::where('id_pic_dokumen', $pic_dokumen->id_pic_dokumen)->firstOrFail()->delete();
+
                     Session::flash('delete', 'Document was successfully deleted!');
                     return redirect()->route('engineering.index');
                 }
