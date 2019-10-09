@@ -29,4 +29,37 @@ class TestController extends Controller
         }
         return $scheduler;
     }
+
+    public function testData($pic_dokumen)
+    {
+        $scheduler = SchedulerEmail::where('id_pic_dokumen', '=', $pic_dokumen)->first();
+        if ($scheduler === null) {
+            return "tidak ada";
+        }else{
+            return $scheduler;
+            return "ada";
+        }
+
+
+        $scheduler = SchedulerEmail::where('id_pic_dokumen', '=', $pic_dokumen)->exists();
+        if ($scheduler) {
+          return $scheduler;
+          return "exist";
+        }else{
+          return "doesnt exist";
+        }
+
+    }
+
+    public function testData2()
+    {
+        $date1 = Carbon::now()->toDateString();
+        $date2 = Carbon::yesterday()->toDateString();
+
+        if ($date1 != $date2) {
+            return "tidak sama";
+        }else {
+            return "sama";
+        }
+    }
 }

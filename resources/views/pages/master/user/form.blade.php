@@ -56,11 +56,10 @@
         <label class="control-label col-md-3">Role</label>
         <div class="col-md-9">
           @if(isset($user))
-            {!! Form::select('nama_role', $listRole, $userRole, array('class' => 'form-control', 'required')) !!}
+            {!! Form::select('nama_role', $listRole, $userRole, array('class' => 'form-control select2', 'required')) !!}
           @else
-            {!! Form::select('nama_role', $listRole, null, array('class' => 'form-control', 'required')) !!}
+            {!! Form::select('nama_role', $listRole, null, array('class' => 'form-control select2', 'required')) !!}
           @endif
-
         </div>
       </div>
     </div>
@@ -69,7 +68,7 @@
       <div class="form-group">
         <label class="control-label col-md-3">Jabatan</label>
         <div class="col-md-9">
-          {!! Form::select('id_jabatan', $listJabatan, null, array('class' => 'form-control', 'required')) !!}
+          {!! Form::select('id_jabatan', $listJabatan, null, array('class' => 'form-control select2', 'required')) !!}
         </div>
       </div>
     </div>
@@ -81,7 +80,7 @@
       <div class="form-group">
         <label class="control-label col-md-3">Lembaga</label>
         <div class="col-md-9">
-          {!! Form::select('id_lembaga', $listLembaga, null, array('class' => 'form-control', 'required')) !!}
+          {!! Form::select('id_lembaga', $listLembaga, null, array('class' => 'form-control select2', 'required')) !!}
         </div>
       </div>
     </div>
@@ -90,7 +89,7 @@
       <div class="form-group">
         <label class="control-label col-md-3">Divisi</label>
         <div class="col-md-9">
-          {!! Form::select('id_divisi', $listDivisi, null, array('class' => 'form-control', 'required')) !!}
+          {!! Form::select('id_divisi', $listDivisi, null, array('class' => 'form-control select2', 'required')) !!}
         </div>
       </div>
     </div>

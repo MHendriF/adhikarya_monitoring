@@ -64,6 +64,36 @@ return [
             'url' => env('AWS_URL'),
         ],
 
+        'dokumen_engineering' => [
+            'driver' => 'local',
+            'root'   => public_path('/dokumen/engineering'),
+        ],
+
+        'dokumen_finance' => [
+            'driver' => 'local',
+            'root'   => public_path('/dokumen/finance'),
+        ],
+
+        'dokumen_mutu' => [
+            'driver' => 'local',
+            'root'   => public_path('/dokumen/mutu'),
+        ],
+
+        'dokumen_production' => [
+            'driver' => 'local',
+            'root'   => public_path('/dokumen/production'),
+        ],
+
+        'dokumen_sekretariat' => [
+            'driver' => 'local',
+            'root'   => public_path('/dokumen/sekretariat'),
+        ],
+
+        'dokumen_hse' => [
+            'driver' => 'local',
+            'root'   => public_path('/dokumen/hse'),
+        ],
+
     ],
 
 ];

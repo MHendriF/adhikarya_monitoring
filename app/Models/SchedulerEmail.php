@@ -15,14 +15,11 @@ class SchedulerEmail extends Model
     public $timestamps = true;
 
     protected $fillable = [
-      'id_user', 'id_dokumen', 'status_dokumen', 'schedule_time'
+      'id_pic_dokumen', 'status_scheduler', 'schedule_time'
     ];
 
-    public function user() {
-      return $this->belongsTo('App\User', 'id_user', 'id_user');
+    public function picdokumen() {
+      return $this->hasOne('App\PicDokumen', 'id_pic_dokumen', 'id_pic_dokumen');
     }
 
-   public function dokumen() {
-     return $this->belongsTo('App\Dokumen', 'id_dokumen', 'id_dokumen');
-   }
 }

@@ -3,9 +3,13 @@
         <div class="panel-body">
             <div class="form-wrap">
                 <div class="form-group">
-                    {!! Form::label('id_user','Pic Dokumen', array('class' => 'col-sm-4 control-label')) !!}
+                    {!! Form::label('id_user','PIC Dokumen', array('class' => 'col-sm-4 control-label')) !!}
                     <div class="col-sm-8">
-                        {!! Form::select('id_user', $listUser, null, array('class' => 'form-control', 'required')) !!}
+                        @if(isset($dokumen))
+                          {!! Form::select('id_user', $listUser, $picDokumen->id_user, array('class' => 'form-control select2', 'required')) !!}
+                        @else
+                          {!! Form::select('id_user', $listUser, null, array('class' => 'form-control select2', 'required')) !!}
+                        @endif
                     </div>
                 </div>
                 <div class="form-group">

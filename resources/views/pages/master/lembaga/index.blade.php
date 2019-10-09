@@ -10,7 +10,7 @@
     <!-- Row -->
 		<div class="row heading-bg">
 		  <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-				<h5 class="txt-dark">{{ $submenu }} List</h5>
+				<h5 class="txt-dark">List {{ $submenu }}</h5>
 			</div>
 			<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 				<ol class="breadcrumb">
@@ -28,7 +28,7 @@
 					<div class="panel-heading">
 						<div class="clearfix"></div>
   					<div class="pull-left">
-  						<a href="{{ route('lembaga.create') }}" class="btn btn-rounded btn-warning"><i class="fa fa-plus"></i> Add New {{ $submenu }}</a>
+  						<a href="{{ route('lembaga.create') }}" class="btn btn-rounded btn-warning"><i class="fa fa-plus"></i> Tambah {{ $submenu }}</a>
   					</div>
   				</div>
 

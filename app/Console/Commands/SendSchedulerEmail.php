@@ -46,7 +46,8 @@ class SendSchedulerEmail extends Command
     {
         $date = Carbon::now()->toDateString();
         $schedulers = DB::table('scheduler_email')
-                          ->join('user', 'scheduler_email.id_user', '=', 'user.id_user')
+                          ->join('pic_dokumen', 'scheduler_email.id_pic_dokumen', '=', 'pic_dokumen.id_pic_dokumen')
+                          ->join('user', 'pic_dokumen.id_user', '=', 'user.id_user')
                           ->where('scheduler_email.schedule_time', '=', $date)
                           ->select('scheduler_email.*', 'user.email')
                           ->get();

@@ -34,7 +34,7 @@
 				<div class="panel panel-primary card-view">
           <div class="panel-heading">
             <div class="pull-left">
-              <h4 class="panel-title txt-light"><strong>Filter Data Document</strong></h4>
+              <h4 class="panel-title txt-light"><strong>Filter Data Dokumen</strong></h4>
             </div>
             <div class="clearfix"></div>
 					</div>
@@ -153,6 +153,7 @@
           $('.datetimepicker1').datetimepicker({
               format: 'YYYY-MM-DD'
           });
+          $(".select2").select2();
       });
   </script>
 

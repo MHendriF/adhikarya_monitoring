@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        'App\Console\Commands\ReminderUser'
+        'App\Console\Commands\ReminderUser',
+        'App\Console\Commands\SendSchedulerEmail'
     ];
 
     /**
@@ -28,6 +29,9 @@ class Kernel extends ConsoleKernel
         //          ->hourly();
         $schedule->command('reminder:user')
                 ->everyMinute();
+
+        $schedule->command('reminder:user')
+                ->dailyAt('06:30');
     }
 
     /**

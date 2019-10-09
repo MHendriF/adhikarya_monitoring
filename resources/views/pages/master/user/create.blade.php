@@ -14,14 +14,14 @@
 
 		<div class="row heading-bg">
 		  <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-				<h5 class="txt-dark">User Create</h5>
+				<h5 class="txt-dark">Tambah {{ $submenu }}</h5>
 			</div>
 			<!-- Breadcrumb -->
 			<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 				<ol class="breadcrumb">
           <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-          <li><a href="{{ route('user.index') }}"><span>User</span></a></li>
-          <li class="active"><span>Create</span></li>
+          <li><a href="{{ route('user.index') }}"><span>{{ $submenu }}</span></a></li>
+          <li class="active"><span>Tambah</span></li>
 				</ol>
 			</div>
 			<!-- /Breadcrumb -->
@@ -84,6 +84,7 @@
             $('.datetimepicker1').datetimepicker({
                 format: 'YYYY-MM-DD'
             });
+            $(".select2").select2();
         });
     </script>
 @endsection

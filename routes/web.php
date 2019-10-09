@@ -12,7 +12,8 @@
 */
 
 Route::get('/test', array('as' => 'test', 'uses' => 'TestController@getScheduler'));
-
+Route::get('/data/{id}', array('as' => 'test', 'uses' => 'TestController@testData'));
+Route::get('/data2', array('as' => 'test', 'uses' => 'TestController@testData2'));
 
 Route::get('/', function () {
 	return Redirect::to('/Alogin');

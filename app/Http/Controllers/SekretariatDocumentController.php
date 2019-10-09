@@ -8,8 +8,11 @@ use Auth;
 use DB;
 use DataTables;
 
+use App\User;
 use App\Models\Dokumen;
 use App\Models\JenisDokumen;
+use App\Models\PicDokumen;
+use App\Models\SchedulerEmail;
 use Spatie\Permission\Models\Role;
 use App\Http\Requests\DocumentRequest;
 
@@ -22,7 +25,7 @@ class SekretariatDocumentController extends Controller
 
     function __construct()
     {
-        $this->submenu = 'Sekretariat Document';
+        $this->submenu = 'Dokumen Sekretariat';
         view()->share('submenu', $this->submenu);
     }
 
@@ -55,7 +58,8 @@ class SekretariatDocumentController extends Controller
     public function create()
     {
         if(Auth::user()) {
-            return view('pages.document.sekretariat.create');
+            $listUser = User::pluck('nama_user', 'id_user')->all();
+            return view('pages.document.sekretariat.create', compact('listUser'));
         }
         else {
             Session::flash('error401', 'Full authentication is required to access this resource');
@@ -88,8 +92,13 @@ class SekretariatDocumentController extends Controller
                 'tanggal_diapprove_owner'    => $request->input('tanggal_diapprove_owner'),
                 'tanggal_diterima_adhikarya'    => $request->input('tanggal_diterima_adhikarya'),
             ));
-
             $dokumen->save();
+
+            $pic_dokumen = $this->savePicDocument($dokumen, $request);
+
+            if (!empty($request->input('deadline_dokumen'))) {
+                $this->saveSchedulerEmail($dokumen, $pic_dokumen, $request);
+            }
 
             Session::flash('create', 'New document was successfully added');
             return redirect()->route('sekretariat.index');
@@ -105,7 +114,9 @@ class SekretariatDocumentController extends Controller
     {
         if(Auth::user()) {
             $dokumen = Dokumen::find($id);
-            return view('pages.document.sekretariat.edit', compact('dokumen'));
+            $listUser = User::pluck('nama_user', 'id_user')->all();
+            $picDokumen = PicDokumen::where('id_dokumen', $dokumen->id_dokumen)->first();
+            return view('pages.document.sekretariat.edit', compact('dokumen', 'listUser', 'picDokumen'));
         }
         else {
             Session::flash('error401', 'Full authentication is required to access this resource');
@@ -119,6 +130,24 @@ class SekretariatDocumentController extends Controller
         if(Auth::user()) {
             $dokumen = Dokumen::find($id);
             $dokumen->update($request->all());
+
+            //Update PIC Dokumen
+            $pic_dokumen = $this->updatePicDocument($dokumen, $request);
+
+            //Update SchedulerEmail
+            $scheduler = SchedulerEmail::where('id_pic_dokumen', '=', $pic_dokumen->id_pic_dokumen)->first();
+
+            if ($scheduler === null) { //if doesnt exist
+                if (!empty($request->input('deadline_dokumen'))) {
+                    $this->saveSchedulerEmail($dokumen, $pic_dokumen, $request);
+                }
+            }
+            else{ //if exist
+                if($scheduler->schedule_time != $request->input('deadline_dokumen')){
+                    $this->updateSchedulerEmail($dokumen, $pic_dokumen, $request);
+                }
+            }
+
             Session::flash('update', 'Document was successfully updated');
             return redirect()->route('sekretariat.index');
         }
@@ -154,5 +183,43 @@ class SekretariatDocumentController extends Controller
                           ->where('jenis_dokumen.nama_jenis_dokumen', '=', $this->namadokumen)
                           ->select('dokumen.*');
         return $model;
+    }
+
+    protected function savePicDocument(Dokumen $dokumen, Request $request)
+    {
+        $pic_dokumen = new PicDokumen(array(
+          'id_user'     => $request->input('id_user'),
+          'id_dokumen'     => $dokumen->id_dokumen,
+        ));
+        $pic_dokumen->save();
+        return $pic_dokumen;
+    }
+
+    protected function saveSchedulerEmail(Dokumen $dokumen, PicDokumen $pic_dokumen, Request $request)
+    {
+        $scheduler = new SchedulerEmail(array(
+          'id_pic_dokumen'     => $pic_dokumen->id_pic_dokumen,
+          'schedule_time' => $dokumen->deadline_dokumen,
+          'status_scheduler' => "",
+        ));
+        $scheduler->save();
+    }
+
+    protected function updatePicDocument(Dokumen $dokumen, Request $request)
+    {
+        $pic_dokumen = PicDokumen::where('id_dokumen', $dokumen->id_dokumen)->first();
+        $pic_dokumen->id_dokumen = $dokumen->id_dokumen;
+        $pic_dokumen->id_user = $request->input('id_user');
+        $pic_dokumen->save();
+        return $pic_dokumen;
+    }
+
+    protected function updateSchedulerEmail(Dokumen $dokumen, PicDokumen $pic_dokumen, Request $request)
+    {
+        $scheduler = SchedulerEmail::where('id_pic_dokumen', $pic_dokumen->id_pic_dokumen)->first();
+        $scheduler->id_pic_dokumen = $scheduler->id_pic_dokumen;
+        $scheduler->schedule_time = $dokumen->deadline_dokumen;
+        $scheduler->status_scheduler = "update scheduler";
+        $scheduler->save();
     }
 }

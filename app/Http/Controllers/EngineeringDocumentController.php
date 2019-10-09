@@ -25,7 +25,7 @@ class EngineeringDocumentController extends Controller
 
     function __construct()
     {
-        $this->submenu = 'Engineering Document';
+        $this->submenu = 'Dokumen Engineering';
         view()->share('submenu', $this->submenu);
     }
 
@@ -94,10 +94,10 @@ class EngineeringDocumentController extends Controller
             ));
             $dokumen->save();
 
-            $this->savePicDocument($dokumen, $request);
+            $pic_dokumen = $this->savePicDocument($dokumen, $request);
 
             if (!empty($request->input('deadline_dokumen'))) {
-                $this->saveSchedulerEmail($dokumen, $request);
+                $this->saveSchedulerEmail($dokumen, $pic_dokumen, $request);
             }
 
             Session::flash('create', 'New document was successfully added');
@@ -114,7 +114,9 @@ class EngineeringDocumentController extends Controller
     {
         if(Auth::user()) {
             $dokumen = Dokumen::find($id);
-            return view('pages.document.engineering.edit', compact('dokumen'));
+            $listUser = User::pluck('nama_user', 'id_user')->all();
+            $picDokumen = PicDokumen::where('id_dokumen', $dokumen->id_dokumen)->first();
+            return view('pages.document.engineering.edit', compact('dokumen', 'listUser', 'picDokumen'));
         }
         else {
             Session::flash('error401', 'Full authentication is required to access this resource');
@@ -128,6 +130,24 @@ class EngineeringDocumentController extends Controller
         if(Auth::user()) {
             $dokumen = Dokumen::find($id);
             $dokumen->update($request->all());
+
+            //Update PIC Dokumen
+            $pic_dokumen = $this->updatePicDocument($dokumen, $request);
+
+            //Update SchedulerEmail
+            $scheduler = SchedulerEmail::where('id_pic_dokumen', '=', $pic_dokumen->id_pic_dokumen)->first();
+
+            if ($scheduler === null) { //if doesnt exist
+                if (!empty($request->input('deadline_dokumen'))) {
+                    $this->saveSchedulerEmail($dokumen, $pic_dokumen, $request);
+                }
+            }
+            else{ //if exist
+                if($scheduler->schedule_time != $request->input('deadline_dokumen')){
+                    $this->updateSchedulerEmail($dokumen, $pic_dokumen, $request);
+                }
+            }
+
             Session::flash('update', 'Document was successfully updated');
             return redirect()->route('engineering.index');
         }
@@ -172,16 +192,34 @@ class EngineeringDocumentController extends Controller
           'id_dokumen'     => $dokumen->id_dokumen,
         ));
         $pic_dokumen->save();
+        return $pic_dokumen;
     }
 
-    protected function saveSchedulerEmail(Dokumen $dokumen, Request $request)
+    protected function saveSchedulerEmail(Dokumen $dokumen, PicDokumen $pic_dokumen, Request $request)
     {
         $scheduler = new SchedulerEmail(array(
-          'id_user'     => $request->input('id_user'),
-          'id_dokumen'     => $dokumen->id_dokumen,
+          'id_pic_dokumen'     => $pic_dokumen->id_pic_dokumen,
           'schedule_time' => $dokumen->deadline_dokumen,
-          'status_dokumen' => "",
+          'status_scheduler' => "",
         ));
+        $scheduler->save();
+    }
+
+    protected function updatePicDocument(Dokumen $dokumen, Request $request)
+    {
+        $pic_dokumen = PicDokumen::where('id_dokumen', $dokumen->id_dokumen)->first();
+        $pic_dokumen->id_dokumen = $dokumen->id_dokumen;
+        $pic_dokumen->id_user = $request->input('id_user');
+        $pic_dokumen->save();
+        return $pic_dokumen;
+    }
+
+    protected function updateSchedulerEmail(Dokumen $dokumen, PicDokumen $pic_dokumen, Request $request)
+    {
+        $scheduler = SchedulerEmail::where('id_pic_dokumen', $pic_dokumen->id_pic_dokumen)->first();
+        $scheduler->id_pic_dokumen = $scheduler->id_pic_dokumen;
+        $scheduler->schedule_time = $dokumen->deadline_dokumen;
+        $scheduler->status_scheduler = "update scheduler";
         $scheduler->save();
     }
 }

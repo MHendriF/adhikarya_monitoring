@@ -15,12 +15,10 @@ class CreateSchedulerEmailTable extends Migration
     {
         Schema::create('scheduler_email', function (Blueprint $table) {
             $table->bigIncrements('id_scheduler_email');
-            $table->bigInteger('id_user')->unsigned();
-            $table->bigInteger('id_dokumen')->unsigned();
-            $table->string('status_dokumen', 80)->nullable();
+            $table->bigInteger('id_pic_dokumen')->unsigned();
             $table->date('schedule_time');
-            $table->foreign('id_user')->references('id_user')->on('user');
-            $table->foreign('id_dokumen')->references('id_dokumen')->on('dokumen');
+            $table->string('status_scheduler', 80)->nullable();
+            $table->foreign('id_pic_dokumen')->references('id_pic_dokumen')->on('pic_dokumen');
 
             $table->timestamps();
         });
