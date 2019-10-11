@@ -18,7 +18,7 @@ class CreateSchedulerEmailTable extends Migration
             $table->bigInteger('id_pic_dokumen')->unsigned();
             $table->date('schedule_time');
             $table->string('status_scheduler', 80)->nullable();
-            $table->foreign('id_pic_dokumen')->references('id_pic_dokumen')->on('pic_dokumen');
+            $table->foreign('id_pic_dokumen')->references('id_pic_dokumen')->on('pic_dokumen')->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
         });

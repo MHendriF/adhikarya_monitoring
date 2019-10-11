@@ -7,14 +7,19 @@ use Mail;
 use Auth;
 use DB;
 use DataTables;
+use Storage;
+use File;
 
 use App\User;
 use App\Models\Dokumen;
 use App\Models\JenisDokumen;
 use App\Models\PicDokumen;
 use App\Models\SchedulerEmail;
+use App\Models\LampiranSekretariat;
 use Spatie\Permission\Models\Role;
 use App\Http\Requests\DocumentRequest;
+
+use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 
@@ -22,11 +27,14 @@ class SekretariatDocumentController extends Controller
 {
     protected $namadokumen = "SEKRETARIAT";
     protected $submenu;
+    protected $today;
 
     function __construct()
     {
         $this->submenu = 'Dokumen Sekretariat';
         view()->share('submenu', $this->submenu);
+        $this->today =  Carbon::now();
+        view()->share('today', $this->today);
     }
 
     public function index()
@@ -49,6 +57,7 @@ class SekretariatDocumentController extends Controller
                               ->addColumn('action', function($dokumen){
                                     return
                                         '<a href="'. route('sekretariat.edit',$dokumen->id_dokumen) .'" data-toggle="tooltip" title="Edit" class="btn btn-success btn-sm btn-icon-anim btn-square mr-5" style="display: unset;"><i class="fa fa-pencil" style="font-size: 14px;"></i></a>'.
+                                        '<a href="'. route('sekretariat.show',$dokumen->id_dokumen) .'" data-toggle="tooltip" title="Detail" class="btn btn-primary btn-sm btn-icon-anim btn-square mr-5" style="display: unset;"><i class="fa fa-eye" style="font-size: 14px;"></i></a>'.
                                         '<a href="'. route('sekretariat.delete',$dokumen->id_dokumen) .'" id="delete" data-toggle="tooltip" title="Delete" class="btn btn-danger btn-sm btn-icon-anim btn-square mr-5" style="display: unset;"><i class="fa fa-trash" style="font-size: 14px;"></i></a>';
                                 })
                               ->make(true);
@@ -100,6 +109,21 @@ class SekretariatDocumentController extends Controller
                 $this->saveSchedulerEmail($dokumen, $pic_dokumen, $request);
             }
 
+            $files = $request->file('lampiran');
+            if(!empty($files)):
+                foreach ($files as $file):
+                    $fileName = $code_document.'-'.date('YmdHis').'-'.$file->getClientOriginalName();
+                    Storage::disk('dokumen_sekretariat')->put($fileName, file_get_contents($file));
+
+                    $data = array('id_dokumen' => $dokumen->id_dokumen,
+                                'nama_file' => $fileName,
+                                'path' => 'dokumen\sekretariat',
+                                'created_at' => $this->today,
+                                'updated_at' => $this->today);
+                    LampiranSekretariat::insert($data);
+                endforeach;
+            endif;
+
             Session::flash('create', 'New document was successfully added');
             return redirect()->route('sekretariat.index');
         }
@@ -108,6 +132,19 @@ class SekretariatDocumentController extends Controller
             return back();
         }
 
+    }
+
+    public function show($id)
+    {
+        if(Auth::user()){
+          $dokumen = Dokumen::find($id);
+          $picDokumen = PicDokumen::where('id_dokumen', $dokumen->id_dokumen)->first();
+          $attachments = $dokumen->lampiran_sekretariat;
+          return view('pages.document.sekretariat.detail', compact('dokumen', 'picDokumen', 'attachments'));
+        }else {
+            Session::flash('error401', 'Full authentication is required to access this resource');
+            return back();
+        }
     }
 
     public function edit($id)
@@ -163,6 +200,18 @@ class SekretariatDocumentController extends Controller
             try {
                 if(Dokumen::where('id_dokumen', '=', $id)->delete())
                 {
+                    $pic_dokumen = PicDokumen::where('id_dokumen', '=', $id)->firstOrFail()->delete();
+                    SchedulerEmail::where('id_pic_dokumen', $pic_dokumen->id_pic_dokumen)->firstOrFail()->delete();
+
+                    $lampiran = LampiranSekretariat::where('id_dokumen', $id)->get();
+                    foreach($lampiran as $fileLampiran) {
+                        $filePath = 'dokumen\sekretariat\\'.$fileLampiran->nama_file;
+                        if(File::exists($filePath)) {
+                            File::delete($filePath);
+                        }
+                        $fileLampiran->delete();
+                    }
+
                     Session::flash('delete', 'Document was successfully deleted!');
                     return redirect()->route('sekretariat.index');
                 }
@@ -221,5 +270,12 @@ class SekretariatDocumentController extends Controller
         $scheduler->schedule_time = $dokumen->deadline_dokumen;
         $scheduler->status_scheduler = "update scheduler";
         $scheduler->save();
+    }
+
+    public function downloadFile($id)
+    {
+        $file = LampiranSekretariat::find($id);
+        $filePath = 'dokumen/'.'sekretariat'.'/'.$file->nama_file;
+        return Response::download($filePath);
     }
 }

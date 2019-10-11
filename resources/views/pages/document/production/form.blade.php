@@ -126,6 +126,12 @@
                         {!! Form::textarea('keterangan_dokumen',null, array('class' => 'form-control')) !!}
                     </div>
                 </div>
+                <div class="form-group">
+                    {!! Form::label('keterangan_dokumen','Lampiran Dokumen', array('class' => 'col-sm-4 control-label')) !!}
+                    <div class="col-sm-8">
+                        <input name="lampiran[]" type="file" multiple />
+                    </div>
+                </div>
                 <div class="col-sm-10 col-sm-offset-3">
                     @include('partials.errors')
                 </div>

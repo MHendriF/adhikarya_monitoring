@@ -64,26 +64,32 @@ Route::group(['middleware' => ['auth']], function()
 			Route::get('engineering/ajax', array('as' => 'engineering.ajax','uses' =>'EngineeringDocumentController@getDocument'));
 			Route::resource('engineering', 'EngineeringDocumentController');
 			Route::get('engineering/{id}/delete',array('as'=> 'engineering.delete','uses' => 'EngineeringDocumentController@destroy'));
+			Route::get('engineering/{id}/download', array('as' => 'engineering.download', 'uses' => 'EngineeringDocumentController@downloadFile'));
 
 			Route::get('production/ajax', array('as' => 'production.ajax','uses' =>'ProductionDocumentController@getDocument'));
 			Route::resource('production', 'ProductionDocumentController');
 			Route::get('production/{id}/delete',array('as'=> 'production.delete','uses' => 'ProductionDocumentController@destroy'));
+			Route::get('production/{id}/download', array('as' => 'production.download', 'uses' => 'ProductionDocumentController@downloadFile'));
 
 			Route::get('finance/ajax', array('as' => 'finance.ajax','uses' =>'FinanceDocumentController@getDocument'));
 			Route::resource('finance', 'FinanceDocumentController');
 			Route::get('finance/{id}/delete',array('as'=> 'finance.delete','uses' => 'FinanceDocumentController@destroy'));
+			Route::get('finance/{id}/download', array('as' => 'finance.download', 'uses' => 'FinanceDocumentController@downloadFile'));
 
 			Route::get('mutu/ajax', array('as' => 'mutu.ajax','uses' =>'MutuDocumentController@getDocument'));
 			Route::resource('mutu', 'MutuDocumentController');
 			Route::get('mutu/{id}/delete',array('as'=> 'mutu.delete','uses' => 'MutuDocumentController@destroy'));
+			Route::get('mutu/{id}/download', array('as' => 'mutu.download', 'uses' => 'MutuDocumentController@downloadFile'));
 
 			Route::get('sekretariat/ajax', array('as' => 'sekretariat.ajax','uses' =>'SekretariatDocumentController@getDocument'));
 			Route::resource('sekretariat', 'SekretariatDocumentController');
 			Route::get('sekretariat/{id}/delete',array('as'=> 'sekretariat.delete','uses' => 'SekretariatDocumentController@destroy'));
+			Route::get('sekretariat/{id}/download', array('as' => 'sekretariat.download', 'uses' => 'SekretariatDocumentController@downloadFile'));
 
 			Route::get('hse/ajax', array('as' => 'hse.ajax','uses' =>'HseDocumentController@getDocument'));
 			Route::resource('hse', 'HseDocumentController');
 			Route::get('hse/{id}/delete',array('as'=> 'hse.delete','uses' => 'HseDocumentController@destroy'));
+			Route::get('hse/{id}/download', array('as' => 'hse.download', 'uses' => 'HseDocumentController@downloadFile'));
 
 		});
 
