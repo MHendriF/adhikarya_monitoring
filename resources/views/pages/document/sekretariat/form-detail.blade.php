@@ -103,11 +103,11 @@
                     <div class="col-sm-8">
                         @if(count($attachments) > 0)
                         <div class="panel-wrapper collapse in">
-                            <div class="panel-body">
+                            <div class="panel-body" style="border: 2px solid #E5E5E5; padding-left: 10px; padding-right: 10px;">
                                 <ul class="list-icons">
                                     @foreach($attachments as $attachment)
                                     <a href="{{ url('/dokumen/sekretariat/'.$attachment->nama_file)}}" target="_blank" >
-                                        <li class="mb-10 txt-dark"><i class="fa fa-angle-double-right text-success mr-5"></i> {{$attachment->nama_file}}</li>
+                                        <li class="mb-10 txt-primary"><i class="fa fa-angle-double-right text-success mr-5"></i> {{$attachment->nama_file}}</li>
                                     </a>
                                     @endforeach
                                 </ul>
