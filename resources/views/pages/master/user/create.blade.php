@@ -46,7 +46,7 @@
                   <div class="form-wrap">
 
                     {!! Form::open(array('route' => 'user.store', 'method' => 'POST', 'files' => true, 'class' => 'form-horizontal', 'data-toggle' => 'validator', 'role' => 'form')) !!}
-                      @include('pages.master.user.form',array('submit' => 'Create'))
+                      @include('pages.master.user.form',array('submit' => 'Submit'))
                     {!! Form::close() !!}
 
                   </div>

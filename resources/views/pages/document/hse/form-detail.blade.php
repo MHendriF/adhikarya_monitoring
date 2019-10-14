@@ -1,4 +1,4 @@
-<div class="col-xs-8 col-sm-8 col-sm-offset-1">
+<div class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
     <div class="panel-wrapper collapse in">
         <div class="panel-body">
             <div class="form-wrap">

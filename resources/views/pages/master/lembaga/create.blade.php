@@ -49,7 +49,7 @@
                 </center>
 
                 {!! Form::open(array('route' => 'lembaga.store', 'method' => 'POST', 'files' => true, 'class' => 'form-horizontal', 'data-toggle' => 'validator', 'role' => 'form')) !!}
-                  @include('pages.master.lembaga.form',array('submit' => 'Create'))
+                  @include('pages.master.lembaga.form',array('submit' => 'Submit'))
                 {!! Form::close() !!}
 
               </div>

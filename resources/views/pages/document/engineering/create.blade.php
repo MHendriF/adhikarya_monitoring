@@ -49,7 +49,7 @@
                 </center>
 
                 {!! Form::open(array('route' => 'engineering.store', 'method' => 'POST', 'files' => true, 'class' => 'form-horizontal', 'data-toggle' => 'validator', 'role' => 'form')) !!}
-                  @include('pages.document.engineering.form',array('submit' => 'Create'))
+                  @include('pages.document.engineering.form',array('submit' => 'Submit'))
                 {!! Form::close() !!}
 
               </div>

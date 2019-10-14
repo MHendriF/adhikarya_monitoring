@@ -49,7 +49,7 @@
                 </center>
 
                 {!! Form::open(array('route' => 'divisi.store', 'method' => 'POST', 'files' => true, 'class' => 'form-horizontal', 'data-toggle' => 'validator', 'role' => 'form')) !!}
-                  @include('pages.master.divisi.form',array('submit' => 'Create'))
+                  @include('pages.master.divisi.form',array('submit' => 'Submit'))
                 {!! Form::close() !!}
 
               </div>

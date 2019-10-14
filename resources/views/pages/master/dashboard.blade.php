@@ -46,7 +46,7 @@
                     <div class="row mb-30">
                       <div class="col-sm-1">
                       </div>
-                      <div class="col-sm-3">
+                      <div class="col-sm-3 mb-10">
 												<label class="control-label mb-10">Jenis Dokumen</label>
 												<select id="jenis_dokumen_param" name="jenis_dokumen" class="form-control select2" required>
                             <option value='all'>Semua Dokumen</option>
@@ -55,7 +55,7 @@
                             @endforeach
                         </select>
 											</div>
-                      <div class="col-sm-3">
+                      <div class="col-sm-3 mb-10">
 												<label class="control-label mb-10">Tgl Pengajuan Awal</label>
                         <div class='input-group date datetimepicker1'>
         									<input id="start_date_param" type='text' class="form-control" name="start_date"/>
@@ -64,7 +64,7 @@
         									</span>
         								</div>
 											</div>
-                      <div class="col-sm-3">
+                      <div class="col-sm-3 mb-10">
 												<label class="control-label mb-10">Tgl Pengajuan Akhir</label>
                         <div class='input-group date datetimepicker1'>
         									<input id="end_date_param" type='text' class="form-control" name="end_date"/>
@@ -73,9 +73,8 @@
         									</span>
         								</div>
 											</div>
-                      <div class="col-sm-1">
-												<label class="control-label mb-10">Submit</label>
-                        <button type="button" id="find" class="btn login_btn btn-primary"><i class="fa fa-arrow-right"></i></button>
+                      <div class="col-sm-1 mb-10">
+                        <button type="button" id="find" class="btn login_btn btn-primary">Search</i></button>
 											</div>
                     </div>
                   </div>
