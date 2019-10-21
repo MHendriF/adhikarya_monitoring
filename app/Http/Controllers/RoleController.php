@@ -91,7 +91,6 @@ class RoleController extends Controller
     public function store(RoleRequest $request)
     {
         if(Auth::user()) {
-
             Role::create(['guard_name' =>  $request->input('guard_name'),
                         'name' => $request->input('name')]);
 

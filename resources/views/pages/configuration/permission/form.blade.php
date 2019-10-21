@@ -9,15 +9,9 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    {!! Form::label('display','Display', array('class' => 'col-sm-4 control-label')) !!}
+                    {!! Form::label('display','Guard Name', array('class' => 'col-sm-4 control-label')) !!}
                     <div class="col-sm-8">
-                        {!! Form::text('display_name',null, array('class' => 'form-control', 'required')) !!}
-                    </div>
-                </div>
-                <div class="form-group">
-                    {!! Form::label('subject','Deskripsi', array('class' => 'col-sm-4 control-label')) !!}
-                    <div class="col-sm-8">
-                        {!! Form::textarea('description',null, array('rows' => '4', 'class' => 'form-control', 'required')) !!}
+                        {!! Form::text('guard_name',null, array('class' => 'form-control', 'required')) !!}
                     </div>
                 </div>
                 <div class="col-sm-10 col-sm-offset-3">
