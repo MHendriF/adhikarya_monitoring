@@ -196,7 +196,9 @@ class MutuDocumentController extends Controller
 
     public function destroy($id)
     {
-        if(Auth::user()) {
+        $user = Auth::user();
+        $isTrue = $user->hasAnyRole(['Super Admin', 'Project Manager']);
+        if($isTrue) {
             try {
                 if(Dokumen::where('id_dokumen', '=', $id)->delete())
                 {

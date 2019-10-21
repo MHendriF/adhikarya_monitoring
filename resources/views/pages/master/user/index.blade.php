@@ -46,6 +46,7 @@
                         <th>Jabatan</th>
                         <th>Divisi</th>
                         <th>Lembaga</th>
+                        <th>Role</th>
 												<th>Manage</th>
 											</tr>
 										</thead>
@@ -90,6 +91,7 @@
                   {data: 'nama_jabatan'},
                   {data: 'nama_divisi'},
                   {data: 'nama_lembaga'},
+                  {data: 'name'},
                   {data: 'action', orderable: false, searchable: false}
               ],
               "order": [[ 1, 'asc' ]]

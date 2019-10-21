@@ -100,7 +100,9 @@ class UserController extends Controller
         $model = User::join('jabatan', 'user.id_jabatan', '=', 'jabatan.id_jabatan')
                       ->join('divisi', 'user.id_divisi', '=', 'divisi.id_divisi')
                       ->join('lembaga', 'user.id_lembaga', '=', 'lembaga.id_lembaga')
-                      ->select('jabatan.nama_jabatan', 'divisi.nama_divisi', 'lembaga.nama_lembaga', 'user.*');
+                      ->join('model_has_roles', 'user.id_user', '=', 'model_has_roles.model_id')
+                      ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
+                      ->select('jabatan.nama_jabatan', 'divisi.nama_divisi', 'lembaga.nama_lembaga', 'user.*', 'roles.name');
         return $model;
     }
 

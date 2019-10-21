@@ -43,20 +43,20 @@ Route::group(['middleware' => ['auth']], function()
 		Route::get('user/{id}/editpassword',array('as'=> 'user.editpassword','uses' => 'UserController@editpassword'));
 		Route::put('user/{id}/updatepassword',array('as'=> 'user.updatepassword','uses' => 'UserController@updatepassword'));
 
-		Route::group(['prefix' => 'master'], function() {
+		Route::group(['middleware' => ['role:Super Admin|Project Manager']], function () {
+				Route::group(['prefix' => 'master'], function() {
+					Route::get('jabatan/ajax', array('as' => 'jabatan.ajax','uses' =>'JabatanController@getJabatan'));
+					Route::resource('jabatan', 'JabatanController');
+					Route::get('jabatan/{id}/delete',array('as'=> 'jabatan.delete','uses' => 'JabatanController@destroy'));
 
-			Route::get('jabatan/ajax', array('as' => 'jabatan.ajax','uses' =>'JabatanController@getJabatan'));
-			Route::resource('jabatan', 'JabatanController');
-			Route::get('jabatan/{id}/delete',array('as'=> 'jabatan.delete','uses' => 'JabatanController@destroy'));
+					Route::get('divisi/ajax', array('as' => 'divisi.ajax','uses' =>'DivisiController@getDivisi'));
+					Route::resource('divisi', 'DivisiController');
+					Route::get('divisi/{id}/delete',array('as'=> 'divisi.delete','uses' => 'DivisiController@destroy'));
 
-			Route::get('divisi/ajax', array('as' => 'divisi.ajax','uses' =>'DivisiController@getDivisi'));
-			Route::resource('divisi', 'DivisiController');
-			Route::get('divisi/{id}/delete',array('as'=> 'divisi.delete','uses' => 'DivisiController@destroy'));
-
-			Route::get('lembaga/ajax', array('as' => 'lembaga.ajax','uses' =>'LembagaController@getLembaga'));
-			Route::resource('lembaga', 'LembagaController');
-			Route::get('lembaga/{id}/delete',array('as'=> 'lembaga.delete','uses' => 'LembagaController@destroy'));
-
+					Route::get('lembaga/ajax', array('as' => 'lembaga.ajax','uses' =>'LembagaController@getLembaga'));
+					Route::resource('lembaga', 'LembagaController');
+					Route::get('lembaga/{id}/delete',array('as'=> 'lembaga.delete','uses' => 'LembagaController@destroy'));
+				});
 		});
 
 		Route::group(['prefix' => 'document'], function() {
@@ -93,18 +93,20 @@ Route::group(['middleware' => ['auth']], function()
 
 		});
 
-		Route::group(['prefix' => 'config'], function() {
+		Route::group(['middleware' => ['role:Super Admin|Project Manager']], function () {
 
-			Route::get('permission/ajax', array('as' => 'permission.ajax','uses' =>'PermissionController@getPermission'));
-			Route::resource('permission', 'PermissionController');
-			Route::get('permission/{id}/delete',array('as'=> 'permission.delete','uses' => 'PermissionController@destroy'));
+				Route::group(['prefix' => 'config'], function() {
+					Route::get('permission/ajax', array('as' => 'permission.ajax','uses' =>'PermissionController@getPermission'));
+					Route::resource('permission', 'PermissionController');
+					Route::get('permission/{id}/delete',array('as'=> 'permission.delete','uses' => 'PermissionController@destroy'));
 
-			Route::get('role/ajax', array('as' => 'role.ajax','uses' =>'RoleController@getRole'));
-			Route::resource('role', 'RoleController');
-			Route::get('role/{id}/assign',array('as'=> 'role.assign','uses' => 'RoleController@assign'));
-			Route::put('role/{id}/assign/update',array('as'=> 'role.assign.update','uses' => 'RoleController@assignUpdate'));
-			Route::get('role/{id}/delete',array('as'=> 'role.delete','uses' => 'RoleController@destroy'));
-
+					Route::get('role/ajax', array('as' => 'role.ajax','uses' =>'RoleController@getRole'));
+					Route::resource('role', 'RoleController');
+					Route::get('role/{id}/assign',array('as'=> 'role.assign','uses' => 'RoleController@assign'));
+					Route::put('role/{id}/assign/update',array('as'=> 'role.assign.update','uses' => 'RoleController@assignUpdate'));
+					Route::get('role/{id}/delete',array('as'=> 'role.delete','uses' => 'RoleController@destroy'));
+				});
+				
 		});
 
 });

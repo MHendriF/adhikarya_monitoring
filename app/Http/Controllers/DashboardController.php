@@ -123,7 +123,7 @@ class DashboardController extends Controller
                 }
             }
         }
-        
+
         return $model;
     }
 }

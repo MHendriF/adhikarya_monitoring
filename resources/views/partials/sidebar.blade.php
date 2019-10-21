@@ -84,7 +84,7 @@
 					</ul>
 				</li>
 				<li><hr class="light-grey-hr mb-10"/></li>
-				@role('Admin')
+				@role('Super Admin')
 					<!-- <li class="navigation-header">
 						<span>Report</span>
 						<i class="zmdi zmdi-more"></i>

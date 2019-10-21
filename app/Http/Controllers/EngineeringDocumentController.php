@@ -149,7 +149,9 @@ class EngineeringDocumentController extends Controller
 
     public function edit($id)
     {
-        if(Auth::user()) {
+        $user = Auth::user();
+        $isTrue = $user->hasAnyRole(['Super Admin', 'Project Manager', 'Project Department Manager', 'Supervisor']);
+        if($isTrue) {
             $dokumen = Dokumen::find($id);
             $listUser = User::pluck('nama_user', 'id_user')->all();
             $picDokumen = PicDokumen::where('id_dokumen', $dokumen->id_dokumen)->first();
@@ -196,7 +198,9 @@ class EngineeringDocumentController extends Controller
 
     public function destroy($id)
     {
-        if(Auth::user()) {
+        $user = Auth::user();
+        $isTrue = $user->hasAnyRole(['Super Admin', 'Project Manager']);
+        if($isTrue) {
             try {
                 if(Dokumen::where('id_dokumen', '=', $id)->delete())
                 {
